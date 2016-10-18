@@ -1,0 +1,13 @@
+package de.uni.hamburg.swk.extractor.database.types;
+
+public enum CapabilityType
+{
+    Undefined,
+    DevelopmentAndConfigurationCapability,
+    BehaviorCapability,
+    OperationalCapability,
+    InteroperabilityCapability,
+    UsabilityCapability,
+    CommercialCapability,
+    StorageCapability
+}

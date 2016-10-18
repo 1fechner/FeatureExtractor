@@ -1,0 +1,4 @@
+1473944171093	Rename local variable 'n'
+1473954273754	Rename field 'table'
+1473954277127	Rename field 'comboType'
+1473955089694	Extract method 'showSelection'

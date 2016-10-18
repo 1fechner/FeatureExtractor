@@ -1,0 +1,36 @@
+1469469926197	Rename method 'openAKEdit'
+1469470622401	Rename field '_selction'
+1469470639104	Rename method 'openEdit'
+1469470642039	Rename method 'openEditTechnologySolution'
+1469470703436	Rename method 'openSelectProject'
+1469470707327	Rename method 'openNewProject'
+1469470711872	Rename method 'openEditProject'
+1469470901111	Rename local variable 'technology'
+1469471000303	Rename field '_selection'
+1469471003113	Rename local variable 'selection'
+1469471400813	Rename field 'AssociatedFeature'
+1469471408396	Rename local variable 'associatedFeature'
+1469471417379	Rename field 'AssociatedFeature'
+1469471422339	Rename local variable 'associatedFeature'
+1469471712117	Extract constant 'ABORTING_TRANSACTION'
+1469472492881	Rename method 'hasSelection'
+1469472497901	Rename method 'save'
+1469472718216	Rename method 'commit'
+1469473081885	Rename local variable '_comboDependsOn'
+1469473832406	Rename type 'FeaturesDAO'
+1469717641011	Convert local variable 'btn100' to field
+1469717645568	Convert local variable 'btn101' to field
+1469717648446	Convert local variable 'btn102' to field
+1469717725263	Convert local variable 'listIgnoreFiles' to field
+1469717730158	Convert local variable 'listIgnoreDirectories' to field
+1469718010447	Convert local variable 'spinnerLimitRecursion' to field
+1469724246820	Convert local variable 'btnIgnoreFeaturesWithout' to field
+1469724267812	Rename field 'btn201'
+1469724279968	Rename local variable 'btnFormatInput'
+1469724282631	Convert local variable 'btn201' to field
+1469724298662	Rename local variable 'btnCheckButton'
+1469724303027	Rename local variable 'btnMultiThreading'
+1469724307877	Convert local variable 'btn203' to field
+1469724311073	Convert local variable 'btn202' to field
+1469803002919	Rename local variable 'features'
+1469885830045	Rename method 'save'

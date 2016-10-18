@@ -1,0 +1,168 @@
+package de.uni.hamburg.swk.extractor.gui.form;
+
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.CCombo;
+import org.eclipse.swt.custom.TableEditor;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Dialog;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Listener;
+import org.eclipse.swt.widgets.MessageBox;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.Table;
+import org.eclipse.swt.widgets.TableColumn;
+import org.eclipse.wb.swt.SWTResourceManager;
+
+import de.uni.hamburg.swk.extractor.gui.controller.KnowledgeBaseEditController;
+
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.TableItem;
+
+public class FormArchitecturalKnowledge extends Dialog
+{
+    private KnowledgeBaseEditController _controller;
+
+    protected Object result;
+    protected Shell shell;
+    private Table table;
+
+    /**
+     * Create the dialog.
+     * 
+     * @param parent
+     * @param style
+     */
+    public FormArchitecturalKnowledge(Shell parent, int style)
+    {
+        super(parent, style);
+        setText("Edit Architectural Knowledge");
+    }
+
+    /**
+     * Open the dialog.
+     * 
+     * @return the result
+     */
+    public Object open()
+    {
+        createContents();
+        shell.open();
+        shell.layout();
+        Display display = getParent().getDisplay();
+
+        loadAK();
+
+        while (!shell.isDisposed())
+        {
+            if (!display.readAndDispatch())
+            {
+                display.sleep();
+            }
+        }
+        return result;
+    }
+
+    /**
+     * Create contents of the dialog.
+     */
+    private void createContents()
+    {
+        shell = new Shell(getParent(), getStyle());
+        shell.setSize(767, 578);
+        shell.setText(getText());
+
+        table = new Table(shell, SWT.BORDER | SWT.FULL_SELECTION);
+        table.setBounds(10, 10, 743, 514);
+        table.setHeaderVisible(true);
+        table.setLinesVisible(true);
+
+        TableColumn tableClmName = new TableColumn(table, SWT.LEAD);
+        tableClmName.setText("Name");
+
+        TableColumn tblclmnName = new TableColumn(table, SWT.NONE);
+        tblclmnName.setWidth(100);
+        tblclmnName.setText("Name");
+
+        TableColumn tblclmnDependsOn = new TableColumn(table, SWT.NONE);
+        tblclmnDependsOn.setWidth(100);
+        tblclmnDependsOn.setText("DependsOn");
+
+        TableColumn tblclmnName_1 = new TableColumn(table, SWT.NONE);
+        tblclmnName_1.setWidth(321);
+        tblclmnName_1.setText("Description");
+
+        TableColumn tblclmnEnabled = new TableColumn(table, SWT.NONE);
+        tblclmnEnabled.setWidth(100);
+        tblclmnEnabled.setText("Enabled");
+        
+        TableEditor editor = new TableEditor (table);
+        CCombo combo = new CCombo (table, SWT.NONE);
+        combo.setText("CCombo");
+        combo.add("item 1");
+        combo.add("item 2");
+
+        Button btnSave = new Button(shell, SWT.NONE);
+        btnSave.addSelectionListener(new SelectionAdapter()
+        {
+            @Override
+            public void widgetSelected(SelectionEvent arg0)
+            {
+                _controller.save();
+            }
+        });
+        btnSave.setImage(SWTResourceManager.getImage("resources/ak_save.ico"));
+        btnSave.setBounds(551, 530, 94, 36);
+        btnSave.setText("Save");
+
+        Button btnCancel = new Button(shell, SWT.NONE);
+        btnCancel.addSelectionListener(new SelectionAdapter()
+        {
+            @Override
+            public void widgetSelected(SelectionEvent arg0)
+            {
+                if (!_controller.hasChanges())
+                    shell.close();
+                else
+                {
+                    MessageBox bx = new MessageBox(shell, SWT.ICON_WARNING | SWT.NO | SWT.YES);
+                    bx.setText("Save Changes?");
+                    bx.setMessage("You have unsaved changes.\nDo you want to save them?");
+                    int res = bx.open();
+
+                    if (res == SWT.YES)
+                    {
+                        _controller.save();
+                        shell.close();
+                    }
+                }
+            }
+        });
+        btnCancel.setBounds(659, 530, 94, 36);
+        btnCancel.setText("Cancel");
+
+        Label lblStatus = new Label(shell, SWT.NONE);
+        lblStatus.setBounds(10, 530, 535, 36);
+        lblStatus.setText("New Label");
+
+        // Prevent closing
+        shell.addListener(SWT.Traverse, new Listener()
+        {
+            public void handleEvent(Event e)
+            {
+                if (e.detail == SWT.TRAVERSE_ESCAPE)
+                {
+                    e.doit = false;
+                }
+            }
+        });
+    }
+
+    private void loadAK()
+    {
+        _controller = new KnowledgeBaseEditController();
+        _controller.load(table);
+    }
+}

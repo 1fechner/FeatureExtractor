@@ -1,0 +1,61 @@
+package de.uni.hamburg.swk.extractor.gui.form;
+
+import org.eclipse.swt.widgets.Dialog;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.SWT;
+
+public class FormEditFeatures extends Dialog
+{
+
+    private static final String WINDOW_TITLE = "Edit Features";
+    protected Object result;
+    protected Shell shell;
+
+    /**
+     * Create the dialog.
+     * @param parent
+     * @param style
+     */
+    public FormEditFeatures(Shell parent, int style)
+    {
+        super(parent, style);
+        setText(WINDOW_TITLE);
+    }
+
+    /**
+     * Open the dialog.
+     * @return the result
+     */
+    public Object open()
+    {
+        createContents();
+        shell.open();
+        shell.layout();
+        Display display = getParent().getDisplay();
+        while (!shell.isDisposed())
+        {
+            if (!display.readAndDispatch())
+            {
+                display.sleep();
+            }
+        }
+        return result;
+    }
+
+    /**
+     * Create contents of the dialog.
+     */
+    private void createContents()
+    {
+        shell = new Shell(getParent(), getStyle());
+        shell.setSize(767, 556);
+        shell.setText(getText());
+        
+        Button btnNewFeature = new Button(shell, SWT.NONE);
+        btnNewFeature.setBounds(10, 10, 94, 36);
+        btnNewFeature.setText("New Feature");
+
+    }
+}

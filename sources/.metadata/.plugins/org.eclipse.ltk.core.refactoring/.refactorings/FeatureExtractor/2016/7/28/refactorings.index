@@ -1,0 +1,29 @@
+1467988841433	Rename method 'main'
+1467988908572	Delete element
+1467988925738	Rename type 'aa'
+1467994189349	Rename type 'Stream'
+1467994463815	Rename field 'text'
+1467994470628	Rename field 'text_'
+1467995023753	Rename type 'StreamOwn'
+1467998045530	Move compilation unit
+1467998048016	Move compilation unit
+1467998057470	Move compilation unit
+1467999285425	Move compilation unit
+1467999294303	Move compilation unit
+1468007663821	Rename type 'ProgressbarCallback'
+1468007797779	Rename local variable 't'
+1468007977786	Rename type 'DummyCallback'
+1468072783372	Encapsulate field '_selectedProject'
+1468083583846	Move compilation units
+1468083598687	Rename package 'de.uni.hamburg.swk.extractor.gui.forms'
+1468088706006	Rename local variable 's'
+1468088917021	Delete element
+1468089834793	Rename method 'getById'
+1468089862347	Rename field 'QUERY_ID'
+1468100464748	Rename local variable '_path'
+1468100471236	Rename local variable '_fileType'
+1468100474524	Rename local variable '_scanned'
+1468100477562	Rename local variable '_version'
+1468101381275	Rename type 'DialogSelectProject'
+1468103578004	Rename local variable '_project'
+1468103590112	Encapsulate field '_parent'

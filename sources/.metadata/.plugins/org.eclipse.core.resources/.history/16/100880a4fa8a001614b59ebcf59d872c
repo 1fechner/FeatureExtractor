@@ -1,0 +1,94 @@
+package de.uni.hamburg.swk.extractor.gui.controller.service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.eclipse.swt.widgets.Tree;
+import org.eclipse.swt.widgets.TreeItem;
+import org.eclipse.wb.swt.SWTResourceManager;
+
+import de.uni.hamburg.swk.extractor.configuration.Configuration;
+import de.uni.hamburg.swk.extractor.configuration.OptimizationRules;
+import de.uni.hamburg.swk.extractor.database.dao.impl.DecisionPointDAO;
+import de.uni.hamburg.swk.extractor.database.entities.ak.TechnologySolution;
+import de.uni.hamburg.swk.extractor.database.entities.alternatives.DecisionPoint;
+import de.uni.hamburg.swk.extractor.gui.controller.AbstractTreeController;
+import de.uni.hamburg.swk.extractor.service.decisionpoints.DecisionPointService;
+import de.uni.hamburg.swk.extractor.utils.Constants;
+import de.uni.hamburg.swk.extractor.utils.Messages;
+
+public class DecisionPointServiceController extends AbstractTreeController
+{
+    public void startFindDecisionpoints()
+    {
+        DecisionPointService decisionPointService = new DecisionPointService();
+        decisionPointService.findDecisionPoints();
+    }
+
+    public void fill(Tree _treeDecisionPoints)
+    {
+        if (Configuration.getSelectedProject() == null)
+            return;
+
+        _treeDecisionPoints.removeAll();
+
+        TreeItem root = new TreeItem(_treeDecisionPoints, 0);
+        root.setText(Configuration.getSelectedProject().getName());
+        root.setImage(SWTResourceManager.getImage(Constants.ICO_PROJECT));
+
+        List<DecisionPoint> desc = new DecisionPointDAO().getAllForProject(Configuration.getSelectedProject());
+
+        for (DecisionPoint d : desc)
+        {
+            TreeItem item = new TreeItem(root, 0);
+            item.setText(String.format(Messages.DECISIONPOINT_REPLACE, d.getAlternative().getIsAlternativeTo()
+                    .getName(), d.getAlternative().getTechnology().getName()));
+            item.setImage(SWTResourceManager.getImage(Constants.ICO_ALTERNATIVE));
+
+            TreeItem dp = new TreeItem(item, 0);
+            dp.setText(String.format(Messages.DECISIONPOINT_CONSIDER, d.getCommonRoot().getName(),
+                    d.getDependencyChainLength()));
+            dp.setImage(SWTResourceManager.getImage(Constants.ICO_WARNING));
+
+            TreeItem path = new TreeItem(item, 0);
+            path.setText(String.format(Messages.DECISIONPOINT_PATH, d.getCommonRoot().getName(), d.getAlternative()
+                    .getIsAlternativeTo().getName(), d.getAlternative().getTechnology().getName()));
+            path.setImage(SWTResourceManager.getImage(Constants.ICO_WARNING));
+
+            attachPath(path, d);
+
+            if (OptimizationRules.R_401_WARN_MISSING_FEATURE && d.getAlternative().getCoverage() < 1.0f)
+            {
+                TreeItem missing = new TreeItem(item, 0);
+                missing.setText(String.format(Messages.DECISIONPOINT_WARNING_MISSING_FEATURE, d.getAlternative()
+                        .getTechnology().getName(), d.getAlternative().getCoverage()));
+                missing.setImage(SWTResourceManager.getImage(Constants.ICO_WARNING));
+            }
+        }
+
+        root.setExpanded(true);
+    }
+
+    private void attachPath(TreeItem path, DecisionPoint point)
+    {
+        // TODO Auto-generated method stub
+
+        List<TechnologySolution> alongPathA = new ArrayList<TechnologySolution>();
+        List<TechnologySolution> alongPathB = new ArrayList<TechnologySolution>();
+        List<TechnologySolution> a = new ArrayList<TechnologySolution>();
+
+        a.add(point.getAlternative().getTechnology());
+        a.add(point.getAlternative().getIsAlternativeTo());
+
+        TechnologySolution p = point.getAlternative().getTechnology();
+
+        for (TechnologySolution t : a)
+        {
+            while (p.getDependsOn() != null && !p.getDependsOn().equals(point.getCommonRoot()))
+            {
+                p = p.getDependsOn();
+                alongPath.add(p);
+            }
+        }
+    }
+}

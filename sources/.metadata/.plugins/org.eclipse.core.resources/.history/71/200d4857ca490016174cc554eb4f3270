@@ -1,0 +1,28 @@
+package de.uni.hamburg.swk.extractor.gui.controller;
+
+import org.eclipse.swt.widgets.Table;
+
+public class TreeController
+{
+    /**
+     * Clear the given table. <br>
+     * Removes all data
+     * 
+     * @param table The table to be cleared
+     */
+    protected void clearTable(Table table)
+    {
+        table.setRedraw(false);
+
+        while (table.getColumnCount() > 0)
+        {
+            table.getColumns()[0].dispose();
+        }
+
+        table.clearAll();
+        table.removeAll();
+
+        table.setRedraw(true);
+    }
+
+}

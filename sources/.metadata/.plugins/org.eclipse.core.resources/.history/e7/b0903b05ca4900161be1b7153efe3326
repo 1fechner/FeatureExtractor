@@ -1,0 +1,134 @@
+package de.uni.hamburg.swk.extractor.gui.controller;
+
+import java.util.List;
+
+import org.eclipse.swt.custom.StyledText;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Combo;
+import org.eclipse.swt.widgets.Table;
+import org.eclipse.swt.widgets.TableItem;
+import org.eclipse.swt.widgets.Text;
+import org.hibernate.Transaction;
+
+import de.uni.hamburg.swk.extractor.database.SessionService;
+import de.uni.hamburg.swk.extractor.database.dao.impl.TechnologySolutionDAO;
+import de.uni.hamburg.swk.extractor.database.entities.ak.TechnologySolution;
+
+public class KnowledgeBaseTechnologiesEditController
+{
+    private boolean _hasChanges = false;
+    private TechnologySolution _currentSelection;
+    private Transaction _transaction = SessionService.getCurrentSession().beginTransaction();
+
+    public TechnologySolution getCurrentSelection()
+    {
+        return _currentSelection;
+    }
+
+    public boolean hasChanges()
+    {
+        return _hasChanges;
+    }
+
+    public void load(Table table)
+    {
+        table.removeAll();
+        
+        List<TechnologySolution> technologies = new TechnologySolutionDAO().getAll();
+
+        for (TechnologySolution t : technologies)
+        {
+            TableItem i = new TableItem(table, 0);
+
+            String[] attributes = new String[4];
+            attributes[0] = t.getName();
+            attributes[1] = t.getDependsOn() != null ? t.getDependsOn().getName() : "-";
+            attributes[2] = t.getDescription();
+            attributes[3] = t.isEnabled() + "";
+
+            i.setText(attributes);
+            i.setData(t);
+        }
+    }
+
+    public void save()
+    {
+        if (_hasChanges && _transaction != null)
+        {
+            _transaction.commit();
+            _hasChanges = false;
+        }
+    }
+
+    public void abort()
+    {
+        System.out.println(_transaction);
+        if (_transaction != null)
+        {
+            _transaction.rollback();
+            _hasChanges = false;
+        }
+    }
+
+    public void showTechnology(TableItem[] selection, Text textName, Combo comboDependsOn, Button btnCheckEnabled,
+            StyledText styledTextDescription)
+    {
+        if (selection.length > 0)
+        {
+            TechnologySolution t = (TechnologySolution) selection[0].getData();
+
+            _currentSelection = t;
+
+            textName.setText(t.getName());
+            comboDependsOn.setText(t.getDependsOn() != null ? t.getDependsOn().getName() : "");
+            btnCheckEnabled.setSelection(t.isEnabled());
+            styledTextDescription.setText(t.getDescription());
+        }
+        else
+        {
+            _currentSelection = null;
+            textName.setText("");
+            comboDependsOn.setText("");
+            btnCheckEnabled.setSelection(false);
+            styledTextDescription.setText("");
+        }
+    }
+
+    public void saveCurrentSelection(String name, TechnologySolution dependency, boolean enabled, String description)
+    {
+        if (_currentSelection == null)
+            return;
+
+        if (!_hasChanges)
+        {
+            _transaction = SessionService.getCurrentSession().beginTransaction();
+            _hasChanges = true;
+        }
+
+        System.out.println(name + dependency + enabled + description);
+
+        _currentSelection.setName(name);
+        _currentSelection.setDependsOn(dependency);
+        _currentSelection.setEnabled(enabled);
+        _currentSelection.setDescription(description);
+
+        SessionService.getCurrentSession().save(_currentSelection);
+    }
+
+    public void deleteCurrentSelection()
+    {
+        if (_currentSelection == null)
+            return;
+        
+        System.out.println("del");
+
+//        if (!_hasChanges)
+//        {
+//            _transaction = SessionService.getCurrentSession().beginTransaction();
+//            _hasChanges = true;
+//        }
+//
+//        SessionService.getCurrentSession().delete(_currentSelection);
+//        _currentSelection = null;
+    }
+}

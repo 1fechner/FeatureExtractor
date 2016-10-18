@@ -1,0 +1,4 @@
+1470326979476	Convert local variable 'comboLanguage' to field
+1470327386929	Rename enum constant 'ANY'
+1470327390101	Rename enum constant 'JAVA'
+1470327399048	Rename enum constant 'CSHARP'

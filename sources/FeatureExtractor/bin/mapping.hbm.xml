@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<!-- TechnologySolution -->
+	<class
+		name="de.uni.hamburg.swk.extractor.database.entities.ak.TechnologySolution"
+		table="AK_TechnologySolution">
+		<id name="id">
+			<column name="ID" />
+			<generator class="increment"></generator>
+		</id>
+		<many-to-one name="dependsOn" column="DependsOn" class="de.uni.hamburg.swk.extractor.database.entities.ak.TechnologySolution" />
+		<property name="name">
+			<column name="Name"></column>
+		</property>
+		<property name="description">
+			<column name="Description" />
+		</property>
+		<property name="decisionBuddyRef">
+			<column name="DecisionBuddyRef" />
+		</property>
+		<property name="enabled">
+			<column name="Display" />
+		</property>
+	</class>
+
+	<!-- TechnologyFeature -->
+	<class
+		name="de.uni.hamburg.swk.extractor.database.entities.ak.TechnologyFeature"
+		table="AK_TechnologyFeature">
+		<id name="id">
+			<column name="ID" />
+			<generator class="increment"></generator>
+		</id>
+		<many-to-one name="belongsTo" column="BelongsTo" class="de.uni.hamburg.swk.extractor.database.entities.ak.TechnologySolution" />
+		<many-to-one name="dependsOn" column="DependsOn" class="de.uni.hamburg.swk.extractor.database.entities.ak.TechnologyFeature" />
+		<property name="name">
+			<column name="Name"></column>
+		</property>
+		<property name="description">
+			<column name="Description" />
+		</property>
+		<many-to-one name="featureImplemented" column="Feature" class="de.uni.hamburg.swk.extractor.database.entities.ak.Feature" />
+		<property name="capabilityType" column="CapabilityType">
+			<type name="org.hibernate.type.EnumType">
+				<param name="enumClass">de.uni.hamburg.swk.extractor.database.entities.CapabilityType</param>
+			</type>
+		</property>
+	</class>
+
+	<!-- Indicator -->
+	<class name="de.uni.hamburg.swk.extractor.database.entities.ak.Indicator"
+		table="AK_Indicator">
+		<id name="id">
+			<column name="ID" />
+			<generator class="increment"></generator>
+		</id>
+		<many-to-one name="belongsTo" column="BelongsTo" class="de.uni.hamburg.swk.extractor.database.entities.ak.TechnologyFeature" />
+		<property name="confidence" column="Confidence">
+			<type name="org.hibernate.type.EnumType">
+				<param name="enumClass">de.uni.hamburg.swk.extractor.database.entities.Confidence</param>
+			</type>
+		</property>
+		<property name="type" column="Type">
+			<type name="org.hibernate.type.EnumType">
+				<param name="enumClass">de.uni.hamburg.swk.extractor.database.entities.IndicatorType</param>
+			</type>
+		</property>
+		<property name="indicatorLanguage" column="IndicatorLanguage">
+			<type name="org.hibernate.type.EnumType">
+				<param name="enumClass">de.uni.hamburg.swk.extractor.database.entities.IndicatorLanguage</param>
+			</type>
+		</property>
+		<property name="value">
+			<column name="Value" />
+		</property>
+		<property name="parameter">
+			<column name="Parameter" />
+		</property>
+		<property name="scope">
+			<column name="Scope" />
+		</property>
+	</class>
+
+	<!-- ASTA -->
+	<class name="de.uni.hamburg.swk.extractor.database.entities.ak.ASTA"
+		table="AK_ASTA">
+		<id name="id">
+			<column name="ID" />
+			<generator class="increment"></generator>
+		</id>
+		<many-to-one name="belongsTo" column="BelongsTo" class="de.uni.hamburg.swk.extractor.database.entities.ak.TechnologyFeature" />
+		<property name="context">
+			<column name="Context"></column>
+		</property>
+		<property name="description">
+			<column name="Description"></column>
+		</property>
+		<property name="capabilityType" column="CapabilityType">
+			<type name="org.hibernate.type.EnumType">
+				<param name="enumClass">de.uni.hamburg.swk.extractor.database.entities.CapabilityType</param>
+			</type>
+		</property>
+		<property name="type" column="Type">
+			<type name="org.hibernate.type.EnumType">
+				<param name="enumClass">de.uni.hamburg.swk.extractor.database.entities.ASTAType</param>
+			</type>
+		</property>
+		<property name="attribute" column="Attribute">
+			<type name="org.hibernate.type.EnumType">
+				<param name="enumClass">de.uni.hamburg.swk.extractor.database.entities.ASTAAttribute</param>
+			</type>
+		</property>
+		<property name="source">
+			<column name="Source"></column>
+		</property>
+	</class>
+
+	<!-- Feature -->
+	<class name="de.uni.hamburg.swk.extractor.database.entities.ak.Feature"
+		table="AK_Feature">
+		<id name="id">
+			<column name="ID" />
+			<generator class="increment"></generator>
+		</id>
+		<property name="name">
+			<column name="Name"></column>
+		</property>
+		<property name="description">
+			<column name="Description" />
+		</property>
+		<property name="association">
+			<column name="Association" />
+		</property>
+	</class>
+
+	<!-- ResultSet -->
+	<class
+		name="de.uni.hamburg.swk.extractor.database.entities.result.ResultSet"
+		table="Result_Set">
+		<id name="id">
+			<column name="ID" />
+			<generator class="increment"></generator>
+		</id>
+		<many-to-one name="belongsTo" column="BelongsTo" class="de.uni.hamburg.swk.extractor.database.entities.result.Element" />
+		<many-to-one name="project" column="Project"
+			class="de.uni.hamburg.swk.extractor.database.entities.result.Project" />
+		<many-to-one name="technologyFeature" column="TechnologyFeature" class="de.uni.hamburg.swk.extractor.database.entities.ak.TechnologyFeature" />
+		<property name="confidence">
+			<column name="Confidence"></column>
+		</property>
+		<property name="version">
+			<column name="Version"></column>
+		</property>
+	</class>
+
+	<!-- ResultElement -->
+	<class name="de.uni.hamburg.swk.extractor.database.entities.result.Element"
+		table="Result_Element">
+		<id name="id">
+			<column name="ID" />
+			<generator class="increment"></generator>
+		</id>
+		<many-to-one name="project" column="Project" class="de.uni.hamburg.swk.extractor.database.entities.result.Project" />
+		<many-to-one name="parent" column="Parent" class="de.uni.hamburg.swk.extractor.database.entities.result.Element" />
+		<property name="name">
+			<column name="Name"></column>
+		</property>
+		<property name="path">
+			<column name="Path"></column>
+		</property>
+		<property name="package">
+			<column name="Package"></column>
+		</property>
+		<property name="fileType">
+			<column name="fileType"></column>
+		</property>
+		<property name="scanned">
+			<column name="Scanned"></column>
+		</property>
+		<property name="directory">
+			<column name="Directory"></column>
+		</property>
+		<property name="noOfFeatures">
+			<column name="NoOfFeatures"></column>
+		</property>
+		<property name="version">
+			<column name="Version"></column>
+		</property>
+	</class>
+
+	<!-- ResultProject -->
+	<class name="de.uni.hamburg.swk.extractor.database.entities.result.Project"
+		table="Result_Project">
+		<id name="id">
+			<column name="ID" />
+			<generator class="increment"></generator>
+		</id>
+		<property name="name">
+			<column name="Name"></column>
+		</property>
+		<property name="source">
+			<column name="Source"></column>
+		</property>
+		<property name="minConfidence">
+			<column name="MinConfidence"></column>
+		</property>
+		<property name="minFeatureCoverage">
+			<column name="MinFeatureCoverage"></column>
+		</property>
+		<property name="maxDependencyChain">
+			<column name="MaxDependencyChain"></column>
+		</property>
+		<property name="version">
+			<column name="Version"></column>
+		</property>
+	</class>
+
+	<!-- ResultComponent -->
+	<class
+		name="de.uni.hamburg.swk.extractor.database.entities.result.Component"
+		table="Result_Component">
+		<id name="id">
+			<column name="ID" />
+			<generator class="increment"></generator>
+		</id>
+		<many-to-one name="belongsTo" column="BelongsTo" class="de.uni.hamburg.swk.extractor.database.entities.result.Project" />
+		<property name="name">
+			<column name="Name"></column>
+		</property>
+		<property name="path">
+			<column name="Path"></column>
+		</property>
+	</class>
+
+	<!-- Alternative -->
+	<class
+		name="de.uni.hamburg.swk.extractor.database.entities.alternatives.Alternative"
+		table="ALT_Alternative">
+		<id name="id">
+			<column name="ID" />
+			<generator class="increment"></generator>
+		</id>
+		<many-to-one name="technology" column="Technology" class="de.uni.hamburg.swk.extractor.database.entities.ak.TechnologySolution" />
+		<many-to-one name="isAlternativeTo" column="isAlternativeTo" class="de.uni.hamburg.swk.extractor.database.entities.ak.TechnologySolution" />
+		<property name="coverage">
+			<column name="Coverage"></column>
+		</property>
+		<many-to-one name="project" column="Project" class="de.uni.hamburg.swk.extractor.database.entities.result.Project" />
+		<property name="version">
+			<column name="Version"></column>
+		</property>
+	</class>
+
+	<!-- Decision Point -->
+	<class
+		name="de.uni.hamburg.swk.extractor.database.entities.alternatives.DecisionPoint"
+		table="ALT_DecisionPoint">
+		<id name="id">
+			<column name="ID" />
+			<generator class="increment"></generator>
+		</id>
+		<many-to-one name="commonRoot" column="CommonRoot" class="de.uni.hamburg.swk.extractor.database.entities.ak.TechnologySolution" />
+		<many-to-one name="alternative" column="Alternative" class="de.uni.hamburg.swk.extractor.database.entities.alternatives.Alternative" />
+		<property name="dependencyChainLength">
+			<column name="DependencyChainLength"></column>
+		</property>
+		<many-to-one name="project" column="Project" class="de.uni.hamburg.swk.extractor.database.entities.result.Project" />
+		<property name="version">
+			<column name="Version"></column>
+		</property>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,13 @@
+1463298879724	Rename method 'scanForFeatures'
+1463308364084	Encapsulate field '_fileType'
+1463388922039	Rename type 'ConfidenceWeight'
+1463388955353	Encapsulate field '_confidence'
+1463388961018	Rename local variable '_belongsTo'
+1463388965076	Rename local variable '_confidence'
+1463388969607	Rename local variable '_params'
+1463391347996	Encapsulate field '_value'
+1463391547134	Encapsulate field '_confidence'
+1463391557893	Rename method 'get_value'
+1463407219770	Delete element
+1463407224708	Delete element
+1463407229683	Delete element

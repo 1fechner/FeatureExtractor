@@ -1,0 +1,53 @@
+package de.uni.hamburg.swk.extractor.utils;
+
+/**
+ * This class contains various messages
+ * 
+ * @author tobias
+ *
+ */
+public class Messages
+{
+    public static final String CONSIDER_DECISIONS_BELOW_S_DEPENDENCY_CHAIN_LENGTH_S = "Consider Decisions below %s (Dependency Chain Length %s)";
+
+    public static final String REPLACE_S_WITH_S = "Replace %s with %s";
+    private Messages()
+    {
+        // ...
+    }
+
+    public static final String VERSION = "Feature Extractor Version %s";
+
+    public static final String PRESCAN_START = "Starting prescan...";
+    public static final String PRESCAN_TIME = "Prescan took %ss (%sms)";
+
+    public static final String SCAN_SCANNING = "Scanning element '%s' ...";
+    public static final String SCAN_SCANNING_FEATURE = "\tScanning for Feature '%s'...";
+    public static final String SCAN_SCANNING_FOUND = "%sFound Feature '%s' of Technology '%s' in '%s'";
+    public static final String SCAN_SCANNING_INDICATOR_FOUND = "\t\tFound indicator %s with value '%s' for type '%s' in file '%s', line %s <<%s>>";
+    public static final String SCAN_SCANNING_NO_INDICATORS = "\t\tNo indicators for feature '%s'!";
+    public static final String SCAN_TIME = "Scan took %ss (%sms)";
+
+    public static final String DECISIONPOINT_WARNING_MISSING_FEATURE = "%s has a coverage of only %s";
+    public static final String DECISIONPOINT_MAKE_DECISION_AT = " Make a decision below Technology '%s' (Path length of %s)";
+    public static final String DECISIONPOINT_CONSIDER_CHANGING = " Consider exchanging '%s' for '%s' (And its possible Dependencies)";
+    public static final String DECISIONPOINT_TECHNOLOGIES_EQUAL = " Technologies are the same. There is no decision to take";
+    public static final String DECISIONPOINT_SEARCHING = "Searching decisionpoint for technology '%s' as alternative to '%s'...";
+
+    public static final String FORM_VIEW_AK_ROOT_ELEMENT_NAME = "Archtectural Knowledge";
+    public static final String FORM_VIEW_AK_INDICATOR_TEXT = "Type: <%s> Language: <%s> Value: <%s> Param: <%s> Scope: <%s>";
+
+    public static final String MSG_SAVE_CHANGES = "You have unsaved changes.\nDo you want to save them?";
+    public static final String TITLE_SAVE_CHANGES = "Save Changes?";
+
+    public static final String SESSION_FACTORY_CONFIGURED = "SessionFactory configured!";
+    public static final String SETTING_UP_SESSION_FACTORY = "Setting up SessionFactory...";
+
+    public static final String ABOUT_NAME = "Tobias Fechner (Uni Hamburg)";
+    public static final String ABOUT_TEXT = "The programm provided was created within the scope of my master's thesis entitled 'Extraction of Technology-Features from existing Software-Systems',\nAll source code was written to support  the concepts proposed in the given thesis.\nPlease not that this is soley a prototype. There is no guarantee every functionality is supported as of yet. The UI might be unstable.\n";
+
+    public static final String DESC_DECISION_POINTS = "When Decision Points are calculated, the maximum length of the dependency path between both technologies is considered.\nA longer path means more dependencies are to be considered and poses a higher risk in the process.\nMore technologies need to be exchanged or reverted.\nIf the path of a decision point is above this value, it is not considred to be useful whatsoever.\nIf you find no suitable decision points with the value you entered, change to consider more complex dependency paths.";
+    public static final String DESC_COVERAGE = "When alternatives are calculated, currently used features are considered.\nA technology qualifies as an alternative, if it implements a certain set of the currently used features. These features shall be substitutes to each other.\nHowever, most technologies will not implemement all features currently used, but only a certain subset of them.\nThe feature coverage indicated, how many features are implemented by the potential alternative, relative to the currently used technology.\nTechnologies with a coverage above this value will be considered potential alternatives.\nIf not alternatives can be found, lower this value to consider technologies with a smaller subset of features implemented.";
+    public static final String DESC_CONFIDENCE = "If the extraction determines the usage of a feature, a confidence is calculated.\nThis value determines, how confident the actual usage of the specific feature is.\nIf the calculated confidence is above this value, the feature is considered for further processing.\nThis can be used to relax constraints.";
+
+}

@@ -1,0 +1,35 @@
+<hibernate-configuration>
+	<session-factory>
+		<property name="dialect">
+			org.hibernate.dialect.MySQLDialect
+		</property>
+		<property name="hibernate.connection.driver_class">
+			com.mysql.jdbc.Driver
+		</property>
+
+		<!-- Database connection -->
+		<property name="hibernate.connection.url">
+			jdbc:mysql://localhost:3306/MA_AK
+		</property>
+		<property name="hibernate.connection.username">
+			root
+		</property>
+		<property name="hibernate.connection.password">
+
+		</property>
+		<property name="hibernate.hbm2ddl.auto ">
+			validate
+		</property>
+		
+		<property name="org.hibernate.SQL.level">
+			FINEST
+		</property>
+		<property name="org.hibernate.type.level ">
+			FINEST
+		</property>
+
+		<!-- List of XML mapping files -->
+		<mapping resource="mapping.hbm.xml" />
+
+	</session-factory>
+</hibernate-configuration>

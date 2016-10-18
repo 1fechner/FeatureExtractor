@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>Chapter 3. Bytecode Enhancement</title><link rel="stylesheet" type="text/css" href="css/hibernate.css"/><meta name="generator" content="DocBook XSL Stylesheets V1.76.1"/><meta name="description" content="Bytecode enhancement is the process of manipulating the bytecode (.class) representation of a class for some purpose. This chapter explores Hibernate's ability to perform bytecode enhancement."/><link rel="home" href="index.html" title="Hibernate User Guide"/><link rel="up" href="index.html" title="Hibernate User Guide"/><link rel="prev" href="ch02.html" title="Chapter 2. Domain Model"/><link rel="next" href="ch04.html" title="Chapter 4. Bootstrap"/><meta xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" http-equiv="Content-Type" content="text/html; charset=UTF-8"/></head><body><p xmlns:d="http://docbook.org/ns/docbook" id="title"><a href="http://www.hibernate.org" class="site_href"><strong>Hibernate.org</strong></a><a href="http://hibernate.org/Documentation/DocumentationOverview" class="doc_href"><strong>Community Documentation</strong></a></p><ul xmlns:d="http://docbook.org/ns/docbook" class="docnav"><li class="previous"><a accesskey="p" href="ch02.html"><strong>Prev</strong></a></li><li class="next"><a accesskey="n" href="ch04.html"><strong>Next</strong></a></li></ul><div xml:lang="en" class="chapter" title="Chapter 3. Bytecode Enhancement"><div class="titlepage"><div><div><h2 class="title"><a id="BytecodeEnhancement"/>Chapter 3. Bytecode Enhancement</h2></div><div><div class="abstract" title="Abstract"><p class="title"><strong>Abstract</strong></p>
+            <p>
+                Bytecode enhancement is the process of manipulating the bytecode (.class) representation of
+                a class for some purpose.  This chapter explores Hibernate's ability to perform bytecode
+                enhancement.
+            </p>
+        </div></div></div></div><div class="toc"><p><strong>Table of Contents</strong></p><dl><dt><span class="section"><a href="ch03.html#d5e229">3.1. Capabilities</a></span></dt><dd><dl><dt><span class="section"><a href="ch03.html#d5e232">3.1.1. Lazy attribute loading</a></span></dt><dt><span class="section"><a href="ch03.html#d5e244">3.1.2. In-line dirty tracking</a></span></dt><dt><span class="section"><a href="ch03.html#d5e249">3.1.3. Bi-directional association management</a></span></dt><dt><span class="section"><a href="ch03.html#d5e260">3.1.4. Internal performance optimizations</a></span></dt></dl></dd><dt><span class="section"><a href="ch03.html#d5e263">3.2. Performing enhancement</a></span></dt><dd><dl><dt><span class="section"><a href="ch03.html#d5e281">3.2.1. Run-time enhancement</a></span></dt><dt><span class="section"><a href="ch03.html#d5e288">3.2.2. Build-time enhancement</a></span></dt></dl></dd></dl></div>
+
+    
+
+
+    <div class="sidebar"><div class="titlepage"/>
+        <p>
+            Hibernate "grew up" not supporting bytecode enhancement at all.  At that time, Hibernate only
+            supported proxy-based for lazy loading and always used diff-based dirty calculation.  Hibernate
+            3.x saw the first attempts at bytecode enhancement support in Hibernate.  We consider those initial
+            attempts (up until 5.0) completely as an incubation.  The support for bytecode enhancement in 5.0
+            onward is what we are discussing here.
+        </p>
+    </div>
+
+    <div class="section" title="3.1. Capabilities"><div class="titlepage"><div><div><h2 class="title"><a id="d5e229"/>3.1. Capabilities</h2></div></div></div>
+        
+        <p>
+            Hibernate supports the enhancement of an application's Java domain model for the purpose of adding
+            various persistence-related capabilities directly into the class, including...
+        </p>
+
+        <div class="section" title="3.1.1. Lazy attribute loading"><div class="titlepage"><div><div><h3 class="title"><a id="d5e232"/>3.1.1. Lazy attribute loading</h3></div></div></div>
+            
+            <p>
+                Think of this as partial loading support.  Essentially you can
+                tell Hibernate that only part(s) of an entity should be loaded and when the other part(s)
+                should be loaded.  Note that this is very much different from proxy-based idea of lazy loading
+                which is entity-centric where the entity's state is loaded at once as needed.  With bytecode
+                enhancement, individual attributes or groups of attributes are loaded as needed.
+            </p>
+
+            <p>
+                Lazy attributes can be designated to be loaded together; this is called a "lazy group".
+                By default all singular attributes are part of a single group, meaning that when one lazy singular
+                attribute is accessed all lazy singular attributes are loaded.  Lazy plural attributes, by default,
+                are each a lazy group by themselves.  This behavior is explicitly controllable through the
+                <code class="interfacename">@org.hibernate.annotations.LazyGroup</code> annotation.
+            </p>
+
+            <div class="example"><a id="d5e237"/><p class="title"><strong>Example 3.1. @LazyGroup example</strong></p><div class="example-contents">
+                
+                <pre xmlns="" xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="">@Entity
+public class Customer {
+	@Id
+	private Integer id;
+	private String name;
+	@Basic( fetch = FetchType.LAZY )
+	private UUID accountsPayableXrefId;
+	@Lob
+	@Basic( fetch = FetchType.LAZY )
+	@LazyGroup( "lobs" )
+	private Blob image;
+
+	...
+}</pre>
+            </div></div><br class="example-break"/>
+
+            <p>
+                In the above example we have 2 lazy attributes: accountsPayableXrefId and image.  Each is part of
+                a different fetch group (accountsPayableXrefId is part of the default fetch group). Which means
+                that accessing accountsPayableXrefId will not force the loading of image, and vice-versa.
+            </p>
+
+            <div xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2>
+                <p>
+                    As a hopefully temporary legacy hold-over, it is currently required that all lazy singular
+                    associations (many-to-one and one-to-one) also include <code class="literal">@LazyToOne(LazyToOneOption.NO_PROXY)</code>.
+                    The plan is to relax that requirement later.
+                </p>
+            </div>
+        </div>
+
+        <div class="section" title="3.1.2. In-line dirty tracking"><div class="titlepage"><div><div><h3 class="title"><a id="d5e244"/>3.1.2. In-line dirty tracking</h3></div></div></div>
+            
+            <p>
+                Historically Hibernate only supported diff-based dirty calculation for determining which
+                entities in a persistence context have changed.  This essentially means that Hibernate
+                would keep track of the last known state of an entity in regards to the database (typically
+                the last read or write).  Then, as part of flushing the persistence context, Hibernate would walk
+                every entity associated with the persistence context and check its current state against that
+                "last known database state".  This is by far the most thorough approach to dirty checking
+                because it accounts for data-types that can change their internal state
+                (<code class="classname">java.util.Date</code> is the prime example of this).  However, in a persistence
+                context with a large number of associated entities it can also be a performance-inhibiting
+                approach.
+            </p>
+            <p>
+                If your application does not need to care about "internal state changing data-type" use cases,
+                bytecode-enhanced dirty tracking might be a worthwhile alternative to consider, especially in
+                terms of performance.  In this approach Hibernate will manipulate the bytecode of your classes
+                to add "dirty tracking" directly to the entity, allowing the entity itself to keep track of which
+                of its attributes have changed.  Come flush time, Hibernate simply asks your entity what has
+                changed rather that having to perform the state-diff calculations.
+            </p>
+        </div>
+
+        <div class="section" title="3.1.3. Bi-directional association management"><div class="titlepage"><div><div><h3 class="title"><a id="d5e249"/>3.1.3. Bi-directional association management</h3></div></div></div>
+            
+            <p>
+                Hibernate strives to keep your application as close to "normal Java usage" (idiomatic Java)
+                as possible.  Consider a domain model with a normal Order/LineItem bi-directional association:
+            </p>
+            <div class="example"><a id="d5e252"/><p class="title"><strong>Example 3.2. Incorrect normal Java usage</strong></p><div class="example-contents">
+                
+                <pre xmlns="" xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="">Order order = new Order();
+LineItem lineItem = new LineItem();
+order.getLineItems().add( lineItem );
+
+// This blows up (NPE) in normal Java usage
+lineItem.getOrder.getname();</pre>
+            </div></div><br class="example-break"/>
+            <p>
+                This blows up in normal Java usage.  The correct normal Java usage is:
+            </p>
+            <div class="example"><a id="d5e256"/><p class="title"><strong>Example 3.3. Correct normal Java usage</strong></p><div class="example-contents">
+                
+                <pre xmlns="" xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="">Order order = new Order();
+LineItem lineItem = new LineItem();
+order.getLineItems().add( lineItem );
+lineItem.setOrder( order );
+
+// Now this is OK...
+lineItem.getOrder.getname();</pre>
+            </div></div><br class="example-break"/>
+            <p>
+                Bytecode-enhanced bi-directional association management makes that first example work by managing the
+                "other side" of a bi-directional association whenever one side is manipulated.
+            </p>
+        </div>
+
+        <div class="section" title="3.1.4. Internal performance optimizations"><div class="titlepage"><div><div><h3 class="title"><a id="d5e260"/>3.1.4. Internal performance optimizations</h3></div></div></div>
+            
+            <p>
+                Additionally we use the enhancement process to add some additional code that allows us to
+                optimized certain performance characteristics of the persistence context.  These are hard to
+                discuss without diving into a discussion of Hibernate internals.
+            </p>
+        </div>
+    </div>
+
+    <div class="section" title="3.2. Performing enhancement"><div class="titlepage"><div><div><h2 class="title"><a id="d5e263"/>3.2. Performing enhancement</h2></div></div></div>
+        
+        <p>
+            There are two methods to perform bytecode enhancement.  It can be done during run time or build time,
+            using one of the provided plugins for build automation tools.  Each capability must be enabled
+            independently, using the respective property:
+            </p><div class="variablelist"><dl><dt><span class="term">enableLazyInitialization</span></dt><dd>
+                        <p>
+                            Whether enhancement for lazy attribute loading should be done.
+                        </p>
+                    </dd><dt><span class="term">enableDirtyTracking</span></dt><dd>
+                        <p>
+                            Whether enhancement for self-dirty tracking should be done.
+                        </p>
+                    </dd><dt><span class="term">enableAssociationManagement</span></dt><dd>
+                        <p>
+                            Whether enhancement for bi-directional association management should be done.
+                        </p>
+                    </dd></dl></div><p>
+        </p>
+        <p>
+            Ultimately all enhancement is handled by the <code class="code">org.hibernate.bytecode.enhance.spi.Enhancer</code> class.
+            Custom means to enhancement can certainly be crafted on top of Enhancer, but that is beyond the scope of
+            this guide.  Here we will focus on the means Hibernate already exposes for performing these enhancements.
+        </p>
+
+        <div class="section" title="3.2.1. Run-time enhancement"><div class="titlepage"><div><div><h3 class="title"><a id="d5e281"/>3.2.1. Run-time enhancement</h3></div></div></div>
+            
+            <p>
+                Currently run-time enhancement of the domain model is only supported in managed JPA
+                environments following the JPA defined SPI for performing class transformations. Even then, this
+                support is disabled by default.  To enable run-time enhancement, turn on one or more of the following
+                properties in the persistent unit:
+                </p><div class="example"><a id="d5e284"/><p class="title"><strong>Example 3.4. Example persistence.xml</strong></p><div class="example-contents">
+                    
+                    <pre xmlns="" xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="">&lt;persistence xmlns="http://java.sun.com/xml/ns/persistence" version="1.0"&gt;
+    &lt;persistence-unit name="Example"&gt;
+        [...]
+        &lt;properties&gt;
+            [...]
+            &lt;property name="hibernate.enhancer.enableLazyInitialization" value="false"/&gt;
+            &lt;property name="hibernate.enhancer.enableDirtyTracking" value="false"/&gt;
+            &lt;property name="hibernate.enhancer.enableAssociationManagement" value="false"/&gt;
+        &lt;/properties&gt;
+    &lt;/persistence-unit&gt;
+&lt;/persistence&gt;</pre>
+                </div></div><p><br class="example-break"/>
+            </p>
+            <p>
+                Also, at the moment only annotated classes are supported for run-time enhancement.  Only the
+                classes declared in the persistent unit will be enhanced.
+            </p>
+        </div>
+
+        <div class="section" title="3.2.2. Build-time enhancement"><div class="titlepage"><div><div><h3 class="title"><a id="d5e288"/>3.2.2. Build-time enhancement</h3></div></div></div>
+            
+            <p>
+                Hibernate provides plugins for Gradle and Maven build tools.
+            </p>
+
+            <div class="section" title="3.2.2.1. Gradle plugin"><div class="titlepage"><div><div><h4 class="title"><a id="d5e291"/>3.2.2.1. Gradle plugin</h4></div></div></div>
+                
+                <p>
+                    Hibernate provides a Gradle plugin that is capable of providing build-time enhancement of the
+                    domain model as they are compiled as part of a Gradle build. To use the plugin a project would
+                    first need to apply it.
+                </p>
+                <div class="example"><a id="d5e294"/><p class="title"><strong>Example 3.5. Apply the Gradle plugin</strong></p><div class="example-contents">
+                    
+                    <pre xmlns="" xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="">ext {
+    hibernateVersion = 'x.y.z.Final'
+}
+
+buildscript {
+    dependencies {
+        classpath "org.hibernate:hibernate-gradle-plugin:$hibernateVersion"
+    }
+}
+
+hibernate {
+    enhance {
+        enableLazyInitialization= false
+        enableDirtyTracking = false
+        enableAssociationManagement = false
+    }
+}</pre>
+                </div></div><br class="example-break"/>
+                <p>
+                    The configuration that is available is exposed through a registered Gradle DSL extension. The default
+                    value for all configuration settings is <code class="literal">false</code>.
+                </p>
+                <p>
+                    The <code class="code">enhance { }</code> block is required in order for enhancement to occur. Enhancement
+                    is disabled by default in preparation for additions capabilities (hbm2ddl, etc) in the plugin.
+                </p>
+            </div>
+
+            <div class="section" title="3.2.2.2. Maven plugin"><div class="titlepage"><div><div><h4 class="title"><a id="d5e301"/>3.2.2.2. Maven plugin</h4></div></div></div>
+                
+                <p>
+                    Hibernate provides a Maven plugin capable of providing build-time enhancement of the
+                    domain model as they are compiled as part of a Maven build.  The configuration has the same properties
+                    as the Gradle plugin and the default value for all settings is also <code class="literal">false</code>.
+                </p>
+                <p>
+                    The Maven plugin supports one additional configuration settings: failOnError, which controls
+                    what happens in case of an error.  Default behavior is to fail the build, but it can be set so
+                    that only a warning is issued.
+                </p>
+                <div class="example"><a id="d5e306"/><p class="title"><strong>Example 3.6. Apply the Maven plugin</strong></p><div class="example-contents">
+                    
+                    <pre xmlns="" xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="">&lt;build&gt;
+    &lt;plugins&gt;
+        [...]
+        &lt;plugin&gt;
+            &lt;groupId&gt;org.hibernate.orm.tooling&lt;/groupId&gt;
+            &lt;artifactId&gt;hibernate-enhance-maven-plugin&lt;/artifactId&gt;
+            &lt;version&gt;$hibernateVersion&lt;/version&gt;
+            &lt;executions&gt;
+                &lt;execution&gt;
+                    &lt;configuration&gt;
+                        &lt;failOnError&gt;true&lt;/failOnError&gt;
+                        &lt;enableLazyInitialization&gt;false&lt;/enableLazyInitialization&gt;
+                        &lt;enableDirtyTracking&gt;false&lt;/enableDirtyTracking&gt;
+                        &lt;enableAssociationManagement&gt;false&lt;/enableAssociationManagement&gt;
+                    &lt;/configuration&gt;
+                    &lt;goals&gt;
+                        &lt;goal&gt;enhance&lt;/goal&gt;
+                    &lt;/goals&gt;
+                &lt;/execution&gt;
+            &lt;/executions&gt;
+        &lt;/plugin&gt;
+        [...]
+    &lt;/plugins&gt;
+&lt;/build&gt;</pre>
+                </div></div><br class="example-break"/>
+            </div>
+        </div>
+    </div>
+
+</div><hr xmlns="" xmlns:d="http://docbook.org/ns/docbook"/><a xmlns="" xmlns:d="http://docbook.org/ns/docbook" href="legalnotice.html"/><ul xmlns:d="http://docbook.org/ns/docbook" class="docnav"><li class="previous"><a accesskey="p" href="ch02.html"><strong>Prev</strong>Chapter 2. Domain Model</a></li><li class="up"><a accesskey="u" href="#"><strong>Up</strong></a></li><li class="home"><a accesskey="h" href="index.html"><strong>Home</strong></a></li><li class="next"><a accesskey="n" href="ch04.html"><strong>Next</strong>Chapter 4. Bootstrap</a></li></ul></body></html>

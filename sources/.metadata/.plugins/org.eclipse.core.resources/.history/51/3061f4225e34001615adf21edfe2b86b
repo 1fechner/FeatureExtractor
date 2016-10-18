@@ -1,0 +1,80 @@
+package de.uni.hamburg.swk.extractor.alternatives;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.hibernate.mapping.DependantValue;
+
+import de.uni.hamburg.swk.extractor.configuration.Rules;
+import de.uni.hamburg.swk.extractor.database.entities.ak.TechnologySolution;
+import de.uni.hamburg.swk.extractor.database.entities.alternatives.Alternative;
+import de.uni.hamburg.swk.extractor.database.entities.alternatives.DecisionPoint;
+import de.uni.hamburg.swk.extractor.utils.Messages;
+
+public class DecisionPointService
+{
+    public List<DecisionPoint> findDecisionPoints(List<Alternative> alternatives)
+    {
+        List<DecisionPoint> decisionPoints = new ArrayList<DecisionPoint>();
+
+        for (Alternative alt : alternatives)
+        {
+            findDecisionPoint(alt);
+        }
+
+        return decisionPoints;
+    }
+
+    private void findDecisionPoint(Alternative alternative)
+    {
+        System.out.println(String.format(Messages.DECISIONPOINT_SEARCHING, alternative.getTechnology().getName(),
+                alternative.getIsAlternativeTo().getName()));
+
+        if (alternative.getTechnology().equals(alternative.getIsAlternativeTo()))
+            System.out.println(Messages.DECISIONPOINT_TECHNOLOGIES_EQUAL);
+
+        TechnologySolution it1 = alternative.getTechnology();
+        TechnologySolution it2 = alternative.getIsAlternativeTo();
+
+        int depth = 0;
+
+        while (it1.getDependsOn() != null)
+        {
+            while (it2.getDependsOn() != null)
+            {
+                if (it1.getDependsOn().equals(it2.getDependsOn()))
+                {
+                    System.out.println(String.format(Messages.DECISIONPOINT_MAKE_DECISION_AT, it1.getDependsOn()
+                            .getName(), depth));
+                    System.out.println(String.format(Messages.DECISIONPOINT_CONSIDER_CHANGING, it1.getName(),
+                            it2.getName()));
+
+                    if (Rules.R_303_WARN_MISSING_FEATURE && alternative.getCoverage() < 1.0)
+                        System.out.println(String.format(Messages.DECISIONPOINT_WARNING_MISSING_FEATURE, alternative
+                                .getTechnology().getName(), alternative.getCoverage()));
+
+                    if (Rules.R_304_RECOMMEND_ASTAS)
+                        System.out.println(" Print ASTAs?");
+
+                    if (!Rules.R_302_COMPLETE_PATH)
+                    {
+                        System.out.println("");
+                        return;
+                    }
+
+                    depth += 1;
+                }
+
+                depth += 1;
+                it2 = it2.getDependsOn();
+            }
+
+            // Reset it2 to check the complete path again
+            it2 = alternative.getIsAlternativeTo();
+
+            it1 = it1.getDependsOn();
+        }
+
+        System.out.println("");
+    }
+}

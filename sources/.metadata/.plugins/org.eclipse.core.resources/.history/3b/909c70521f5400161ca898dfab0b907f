@@ -1,0 +1,73 @@
+package de.uni.hamburg.swk.extractor.gui.form;
+
+import org.eclipse.swt.widgets.Dialog;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.Composite;
+
+public class FormEditFeatures extends Dialog
+{
+
+    private static final String WINDOW_TITLE = "Edit Features";
+    protected Object result;
+    protected Shell shell;
+
+    /**
+     * Create the dialog.
+     * @param parent
+     * @param style
+     */
+    public FormEditFeatures(Shell parent, int style)
+    {
+        super(parent, style);
+        setText(WINDOW_TITLE);
+    }
+
+    /**
+     * Open the dialog.
+     * @return the result
+     */
+    public Object open()
+    {
+        createContents();
+        shell.open();
+        shell.layout();
+        Display display = getParent().getDisplay();
+        while (!shell.isDisposed())
+        {
+            if (!display.readAndDispatch())
+            {
+                display.sleep();
+            }
+        }
+        return result;
+    }
+
+    /**
+     * Create contents of the dialog.
+     */
+    private void createContents()
+    {
+        shell = new Shell(getParent(), getStyle());
+        shell.setSize(767, 556);
+        shell.setText(getText());
+        
+        Button btnNewFeature = new Button(shell, SWT.NONE);
+        btnNewFeature.setBounds(10, 10, 139, 36);
+        btnNewFeature.setText("New Feature");
+        
+        Button btnCancel = new Button(shell, SWT.NONE);
+        btnCancel.setBounds(659, 508, 94, 36);
+        btnCancel.setText("Cancel");
+        
+        Button btnSave = new Button(shell, SWT.NONE);
+        btnSave.setBounds(559, 508, 94, 36);
+        btnSave.setText("Save");
+        
+        Composite composite = new Composite(shell, SWT.NONE);
+        composite.setBounds(10, 359, 743, 143);
+
+    }
+}

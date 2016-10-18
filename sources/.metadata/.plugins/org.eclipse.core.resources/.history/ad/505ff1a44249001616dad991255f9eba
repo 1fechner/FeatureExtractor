@@ -1,0 +1,239 @@
+package de.uni.hamburg.swk.extractor.gui.form;
+
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.CCombo;
+import org.eclipse.swt.custom.TableEditor;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Dialog;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Listener;
+import org.eclipse.swt.widgets.MessageBox;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.Table;
+import org.eclipse.swt.widgets.TableColumn;
+import org.eclipse.swt.widgets.Text;
+import org.eclipse.wb.swt.SWTResourceManager;
+
+import de.uni.hamburg.swk.extractor.gui.controller.KnowledgeBaseEditController;
+
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.TableItem;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Combo;
+import org.eclipse.swt.custom.StyledText;
+import org.eclipse.swt.widgets.Link;
+
+public class FormArchitecturalKnowledge extends Dialog
+{
+    private KnowledgeBaseEditController _controller;
+
+    protected Object result;
+    protected Shell shell;
+    private Table table;
+    private Text textName;
+
+    /**
+     * Create the dialog.
+     * 
+     * @param parent
+     * @param style
+     */
+    public FormArchitecturalKnowledge(Shell parent, int style)
+    {
+        super(parent, style);
+        setText("Edit Architectural Knowledge");
+    }
+
+    /**
+     * Open the dialog.
+     * 
+     * @return the result
+     */
+    public Object open()
+    {
+        createContents();
+        shell.open();
+        shell.layout();
+        Display display = getParent().getDisplay();
+
+        loadAK();
+
+        while (!shell.isDisposed())
+        {
+            if (!display.readAndDispatch())
+            {
+                display.sleep();
+            }
+        }
+        return result;
+    }
+
+    /**
+     * Create contents of the dialog.
+     */
+    private void createContents()
+    {
+        shell = new Shell(getParent(), getStyle());
+        shell.setSize(939, 652);
+        shell.setText(getText());
+
+        table = new Table(shell, SWT.BORDER | SWT.FULL_SELECTION);
+        table.setBounds(10, 48, 915, 352);
+        table.setHeaderVisible(true);
+        table.setLinesVisible(true);
+        table.addListener(SWT.Selection, new Listener()
+        {
+            public void handleEvent(Event e)
+            {
+                _controller.showTechnology(table.getSelection());
+            }
+        });
+
+        TableColumn tableClmName = new TableColumn(table, SWT.LEAD);
+        tableClmName.setText("Name");
+
+        TableColumn tblclmnName = new TableColumn(table, SWT.NONE);
+        tblclmnName.setWidth(100);
+        tblclmnName.setText("Name");
+
+        TableColumn tblclmnName_1 = new TableColumn(table, SWT.NONE);
+        tblclmnName_1.setWidth(321);
+        tblclmnName_1.setText("Description");
+
+        TableColumn tblclmnDependsOn = new TableColumn(table, SWT.NONE);
+        tblclmnDependsOn.setWidth(100);
+        tblclmnDependsOn.setText("DependsOn");
+
+        TableColumn tblclmnEnabled = new TableColumn(table, SWT.NONE);
+        tblclmnEnabled.setWidth(100);
+        tblclmnEnabled.setText("Enabled");
+
+        Button btnSave = new Button(shell, SWT.NONE);
+        btnSave.addSelectionListener(new SelectionAdapter()
+        {
+            @Override
+            public void widgetSelected(SelectionEvent arg0)
+            {
+                _controller.save();
+            }
+        });
+        btnSave.setImage(SWTResourceManager.getImage("resources/ak_save.ico"));
+        btnSave.setBounds(731, 604, 94, 36);
+        btnSave.setText("Save");
+
+        Button btnCancel = new Button(shell, SWT.NONE);
+        btnCancel.addSelectionListener(new SelectionAdapter()
+        {
+            @Override
+            public void widgetSelected(SelectionEvent arg0)
+            {
+                if (!_controller.hasChanges())
+                    shell.close();
+                else
+                {
+                    MessageBox bx = new MessageBox(shell, SWT.ICON_WARNING | SWT.NO | SWT.YES);
+                    bx.setText("Save Changes?");
+                    bx.setMessage("You have unsaved changes.\nDo you want to save them?");
+                    int res = bx.open();
+
+                    if (res == SWT.YES)
+                    {
+                        _controller.save();
+                        shell.close();
+                    }
+                }
+            }
+        });
+        btnCancel.setBounds(831, 604, 94, 36);
+        btnCancel.setText("Cancel");
+
+        Label lblStatus = new Label(shell, SWT.NONE);
+        lblStatus.setBounds(10, 604, 715, 36);
+        lblStatus.setText("New Label");
+
+        Composite composite = new Composite(shell, SWT.BORDER);
+        composite.setBounds(10, 406, 915, 192);
+
+        textName = new Text(composite, SWT.BORDER);
+        textName.setBounds(103, 10, 379, 37);
+
+        Button btnCheckEnabled = new Button(composite, SWT.CHECK);
+        btnCheckEnabled.setBounds(103, 96, 46, 24);
+
+        Combo comboDependsOn = new Combo(composite, SWT.NONE);
+        comboDependsOn.setBounds(103, 53, 271, 37);
+
+        Label lblName = new Label(composite, SWT.NONE);
+        lblName.setBounds(10, 10, 69, 20);
+        lblName.setText("Name");
+
+        Label lblDescription = new Label(composite, SWT.NONE);
+        lblDescription.setBounds(488, 10, 79, 20);
+        lblDescription.setText("Description");
+
+        Label lblDependson = new Label(composite, SWT.NONE);
+        lblDependson.setBounds(10, 57, 87, 20);
+        lblDependson.setText("DependsOn");
+
+        StyledText styledText = new StyledText(composite, SWT.BORDER);
+        styledText.setBounds(573, 10, 332, 172);
+
+        Label lblEnabled = new Label(composite, SWT.NONE);
+        lblEnabled.setBounds(10, 96, 69, 20);
+        lblEnabled.setText("Enabled");
+
+        Button btnOk = new Button(composite, SWT.NONE);
+        btnOk.setImage(SWTResourceManager.getImage("resources/save.ico"));
+        btnOk.setBounds(373, 146, 94, 36);
+        btnOk.setText("Ok");
+
+        Button btnDelete = new Button(composite, SWT.NONE);
+        btnDelete.setImage(SWTResourceManager.getImage("resources/technology_delete.ico"));
+        btnDelete.setBounds(473, 146, 94, 36);
+        btnDelete.setText("Delete");
+
+        Button btnEditFeatures = new Button(composite, SWT.NONE);
+        btnEditFeatures.setImage(SWTResourceManager.getImage("resources/feature.ico"));
+        btnEditFeatures.setBounds(10, 146, 143, 36);
+        btnEditFeatures.setText("Edit Features");
+
+        Link linkCreateDepended = new Link(composite, SWT.NONE);
+        linkCreateDepended.addSelectionListener(new SelectionAdapter()
+        {
+            @Override
+            public void widgetSelected(SelectionEvent arg0)
+            {
+                System.out.println("Click");
+            }
+        });
+        linkCreateDepended.setBounds(380, 53, 187, 20);
+        linkCreateDepended.setText("<a>Create Dependend Feature</a>");
+
+        Button btnNewTechnology = new Button(shell, SWT.NONE);
+        btnNewTechnology.setImage(SWTResourceManager.getImage("resources/technology_add.ico"));
+        btnNewTechnology.setBounds(10, 6, 155, 36);
+        btnNewTechnology.setText("New Technology");
+
+        // Prevent closing
+        shell.addListener(SWT.Traverse, new Listener()
+        {
+            public void handleEvent(Event e)
+            {
+                if (e.detail == SWT.TRAVERSE_ESCAPE)
+                {
+                    e.doit = false;
+                }
+            }
+        });
+    }
+
+    private void loadAK()
+    {
+        _controller = new KnowledgeBaseEditController();
+        _controller.load(table);
+    }
+}

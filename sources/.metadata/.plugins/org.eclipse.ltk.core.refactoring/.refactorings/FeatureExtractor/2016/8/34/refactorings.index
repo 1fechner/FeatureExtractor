@@ -1,0 +1,7 @@
+1471426781640	Extract constant 'SWT_DIALOG'
+1471426820392	Rename field 'SWT_DIALOG'
+1471429551052	Rename local variable 'feautureID'
+1471682403214	Rename field 'FILETYPES_EXCLUDED'
+1471682987485	Extract method 'addDirectory'
+1471684245242	Rename field 'textIgnoreFiles'
+1471685362185	Rename field 'listIgnoreFiles'

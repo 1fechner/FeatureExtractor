@@ -1,0 +1,34 @@
+1465151430502	Move compilation units
+1465151434473	Delete element
+1465151441563	Delete element
+1465503338341	Rename field 'QUERY'
+1465505005814	Rename field 'PARAM_PROJECT_NAME'
+1465505212091	Rename local variable 'p'
+1465505314355	Encapsulate field '_source'
+1465558933926	Rename local variable 'projectId'
+1465589895271	Rename type 'DAOService'
+1465590024812	Rename type 'AbstractDAOService'
+1465595490107	Encapsulate field '_line'
+1465632751227	Rename type 'ResultElementDAO'
+1465633243889	Move compilation unit
+1465633248119	Move compilation units
+1465633299008	Move compilation units
+1465633429621	Rename field 'QUERY_ALL_TECHNOLOGYFEATURES'
+1465634545490	Rename method 'getAlternativesForTechnologyFeature'
+1465634693028	Rename field 'QUERY_RESULTSETS_PRINT'
+1465634697412	Rename field 'QUERY_RESULTSETS_GROUP_BY_TECHNOLOGYFEATURE'
+1465634708520	Rename field 'QUERY_INDICATORS_FOR_FEATURE'
+1465635494503	Move compilation units
+1465635497996	Delete element
+1465646392298	Delete element
+1465647106124	Rename method 'getRoot'
+1465647117144	Rename method 'getChildrenFor'
+1465665030878	Rename local variable 'node'
+1465665328391	Rename method 'execute'
+1465665339708	Rename method 'getResults'
+1465665488592	Extract method 'printIndicators'
+1465667247428	Delete element
+1465670038374	Rename local variable 't'
+1465670041259	Rename local variable 'e'
+1465670045636	Rename local variable 'c'
+1465670051427	Rename local variable 'p'

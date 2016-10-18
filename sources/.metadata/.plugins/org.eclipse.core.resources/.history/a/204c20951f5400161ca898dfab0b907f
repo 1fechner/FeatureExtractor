@@ -1,0 +1,115 @@
+package de.uni.hamburg.swk.extractor.gui.form;
+
+import org.eclipse.swt.widgets.Dialog;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Text;
+import org.eclipse.swt.custom.StyledText;
+import org.eclipse.swt.widgets.Table;
+
+public class FormEditFeatures extends Dialog
+{
+
+    private static final String WINDOW_TITLE = "Edit Features";
+    protected Object result;
+    protected Shell shell;
+    private Text _textName;
+    private StyledText _textDescription;
+    private Table table;
+    private Text _textAssociation;
+
+    /**
+     * Create the dialog.
+     * @param parent
+     * @param style
+     */
+    public FormEditFeatures(Shell parent, int style)
+    {
+        super(parent, style);
+        setText(WINDOW_TITLE);
+    }
+
+    /**
+     * Open the dialog.
+     * @return the result
+     */
+    public Object open()
+    {
+        createContents();
+        shell.open();
+        shell.layout();
+        Display display = getParent().getDisplay();
+        while (!shell.isDisposed())
+        {
+            if (!display.readAndDispatch())
+            {
+                display.sleep();
+            }
+        }
+        return result;
+    }
+
+    /**
+     * Create contents of the dialog.
+     */
+    private void createContents()
+    {
+        shell = new Shell(getParent(), getStyle());
+        shell.setSize(767, 556);
+        shell.setText(getText());
+        
+        Button btnNewFeature = new Button(shell, SWT.NONE);
+        btnNewFeature.setBounds(10, 10, 139, 36);
+        btnNewFeature.setText("New Feature");
+        
+        Button btnCancel = new Button(shell, SWT.NONE);
+        btnCancel.setBounds(659, 508, 94, 36);
+        btnCancel.setText("Cancel");
+        
+        Button btnSave = new Button(shell, SWT.NONE);
+        btnSave.setBounds(559, 508, 94, 36);
+        btnSave.setText("Save");
+        
+        Composite composite = new Composite(shell, SWT.NONE);
+        composite.setBounds(10, 359, 743, 143);
+        
+        Label lblName = new Label(composite, SWT.NONE);
+        lblName.setBounds(10, 10, 79, 20);
+        lblName.setText("Name");
+        
+        _textName = new Text(composite, SWT.BORDER);
+        _textName.setBounds(94, 10, 233, 37);
+        
+        Label lblDescription = new Label(composite, SWT.NONE);
+        lblDescription.setBounds(333, 10, 79, 20);
+        lblDescription.setText("Description");
+        
+        _textDescription = new StyledText(composite, SWT.BORDER);
+        _textDescription.setBounds(418, 10, 315, 123);
+        
+        Button btnDelete = new Button(composite, SWT.NONE);
+        btnDelete.setBounds(318, 97, 94, 36);
+        btnDelete.setText("Delete");
+        
+        Button btnConfirm = new Button(composite, SWT.NONE);
+        btnConfirm.setBounds(218, 97, 94, 36);
+        btnConfirm.setText("Confirm");
+        
+        _textAssociation = new Text(composite, SWT.BORDER);
+        _textAssociation.setBounds(94, 53, 233, 37);
+        
+        Label lblAssociation = new Label(composite, SWT.NONE);
+        lblAssociation.setBounds(10, 53, 78, 20);
+        lblAssociation.setText("Association");
+        
+        table = new Table(shell, SWT.BORDER | SWT.FULL_SELECTION);
+        table.setBounds(10, 52, 743, 301);
+        table.setHeaderVisible(true);
+        table.setLinesVisible(true);
+
+    }
+}

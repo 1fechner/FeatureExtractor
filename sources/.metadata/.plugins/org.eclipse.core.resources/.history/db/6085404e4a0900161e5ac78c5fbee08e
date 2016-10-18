@@ -1,0 +1,169 @@
+package de.uni.hamburg.swk.extractor.startup.mode;
+
+import java.util.List;
+import java.util.Scanner;
+
+import org.hibernate.Session;
+
+import de.uni.hamburg.swk.extractor.constants.Messages;
+import de.uni.hamburg.swk.extractor.constants.Statics;
+import de.uni.hamburg.swk.extractor.database.entities.TechnologyFeature;
+import de.uni.hamburg.swk.extractor.database.entities.TechnologySolution;
+
+@SuppressWarnings("unchecked")
+public class ModeManagement extends Mode
+{
+    private Session _currentSession = null;
+
+    public ModeManagement()
+    {
+        _currentSession = Statics.getSessionFactory().openSession();
+    }
+
+    @Override
+    public void execute(String[] args)
+    {
+        System.out.println(String.format(Messages.MODE, Messages.MODE_MANAGEMENT));
+
+        if (args.length > 1)
+        {
+            switch (args[1])
+            {
+                case "view":
+                    System.out.println("View all assets stored in the database");
+                    viewAssetsFlat();
+                    viewAssetsTree(true, true);
+                    break;
+                case "get":
+                    System.out.println("Get a specific asset identified by its ID");
+                    if (args.length > 2)
+                        getAsset(args[2]);
+                    break;
+                case "add":
+                    System.out.println("Add a new asset either in batch or interactive mode");
+                    if (args.length > 2)
+                        addAsset(args[2].equals("-i"));
+                    break;
+                default:
+                    System.out.println("Unkown function: " + args[1]);
+                    break;
+            }
+        }
+    }
+
+    private void viewAssetsFlat()
+    {
+        System.out.println("Displaying all assets in database\n");
+
+        System.out.println("<< Technology Solution >>");
+        List<TechnologySolution> res = _currentSession.createQuery("from TechnologySolution").list();
+        for (TechnologySolution t : res)
+        {
+            System.out.println(String.format("Name:\t\t%s (ID: %s)", t.getName(), t.getId()));
+            System.out.println("Description:\t" + t.getDescription());
+            System.out.println("DependsOn:\t" + (t.getDependsOn() != null ? t.getDependsOn().getName() : "-"));
+            System.out.println("DB-Ref:\t\t" + t.getDecisionBuddyRef());
+            System.out.println("-----------------------------");
+        }
+
+        System.out.println("<< TechnologyFeature >>");
+        List<TechnologyFeature> featRes = _currentSession.createQuery("from TechnologyFeature").list();
+        for (TechnologyFeature f : featRes)
+        {
+            System.out.println(String.format("Name:\t\t%s (ID: %s)", f.getName(), f.getId()));
+            System.out.println("Description:\t" + f.getDescription());
+            System.out.println(String.format("BelongsTo:\t%s", f.getBelongsTo() != null ? f.getBelongsTo().getName()
+                    : "-"));
+            System.out.println(String.format("DependsOn:\t%s", f.getDependsOn() != null ? f.getDependsOn().getName()
+                    : "-"));
+        }
+    }
+
+    private void viewAssetsTree(boolean listFeatures, boolean listIndicators)
+    {
+        List<TechnologySolution> root = _currentSession.createQuery(
+                "FROM TechnologySolution WHERE dependsOn IS NULL ORDER BY name").list();
+
+        System.out.println("Viewing as tree...\n");
+
+        for (TechnologySolution t : root)
+        {
+            System.out.println(t.getName());
+            printChildrenForTechnologySolution(t.getId(), 1);
+            printFeaturesForTechnologySolution(t.getId(), 1);
+        }
+    }
+
+    private void printChildrenForTechnologySolution(int id, int depth)
+    {
+        List<TechnologySolution> root = _currentSession.createQuery(
+                "from TechnologySolution where dependsOn = " + id + " order by name").list();
+        
+
+        String someNum = "";
+        someNum += String.format("%0" + depth + "d", 0).replace("0", "  ");
+
+        for (TechnologySolution t : root)
+        {
+            System.out.println(someNum + "T " + t.getName());
+            printChildrenForTechnologySolution(t.getId(), depth + 1);
+            printFeaturesForTechnologySolution(t.getId(), depth + 1);
+        }
+    }
+
+    private void printFeaturesForTechnologySolution(int id, int depth)
+    {
+        List<TechnologyFeature> root = _currentSession.createQuery(
+                "from TechnologyFeature where belongsTo = " + id + " order by name").list();
+
+        String someNum = "";
+        someNum += String.format("%0" + depth + "d", 0).replace("0", "  ");
+
+        for (TechnologyFeature t : node)
+        {
+            System.out.println(someNum + "F " + t.getName());
+            printChildrenForTechnologySolution(t.getId(), depth + 1);
+        }
+    }
+
+    private void getAsset(String id)
+    {
+        // TODO check if id is valid int?
+    }
+
+    private void addAsset(boolean interactive)
+    {
+        if (interactive)
+        {
+            System.out.println("Interactive mode");
+
+            try (Scanner scanIn = new Scanner(System.in))
+            {
+                System.out.print("Name?\n>");
+                String name = scanIn.nextLine();
+
+                System.out.print("Description?\n>");
+                String description = scanIn.nextLine();
+
+                System.out.print("Type?\n>");
+                int type = Integer.parseInt(scanIn.nextLine());
+
+                System.out.print("DependsOn?\n>");
+                int dependsOn = Integer.parseInt(scanIn.nextLine());
+
+                System.out.println("Preview:\t\t\t|");
+                System.out.println("Name\t\t| " + name);
+                System.out.println("Description\t| " + description);
+                System.out.println("Type\t\t| " + type);
+                System.out.println("DependsOn\t| " + dependsOn);
+                System.out.print("Is that correct?\n>");
+                String confirmation = scanIn.nextLine();
+
+                if (confirmation.equals("y") || confirmation.equals(""))
+                    System.out.println("Confirmed");
+                else
+                    System.out.println("Aborted");
+            }
+        }
+    }
+}

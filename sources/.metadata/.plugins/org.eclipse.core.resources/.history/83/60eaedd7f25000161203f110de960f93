@@ -1,0 +1,660 @@
+package de.uni.hamburg.swk.extractor.gui.form;
+
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.StyledText;
+import org.eclipse.swt.events.MouseAdapter;
+import org.eclipse.swt.events.MouseEvent;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.List;
+import org.eclipse.swt.widgets.Listener;
+import org.eclipse.swt.widgets.Menu;
+import org.eclipse.swt.widgets.MenuItem;
+import org.eclipse.swt.widgets.ProgressBar;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.TabFolder;
+import org.eclipse.swt.widgets.TabItem;
+import org.eclipse.swt.widgets.Table;
+import org.eclipse.swt.widgets.Tree;
+import org.eclipse.wb.swt.SWTResourceManager;
+
+import de.uni.hamburg.swk.extractor.configuration.Configuration;
+import de.uni.hamburg.swk.extractor.configuration.OptimizationRules;
+import de.uni.hamburg.swk.extractor.database.SessionService;
+import de.uni.hamburg.swk.extractor.database.entities.result.Project;
+import de.uni.hamburg.swk.extractor.gui.callback.CallbackRegistry;
+import de.uni.hamburg.swk.extractor.gui.callback.impl.CallbackEnableControl;
+import de.uni.hamburg.swk.extractor.gui.callback.impl.CallbackOutput;
+import de.uni.hamburg.swk.extractor.gui.callback.impl.CallbackProgress;
+import de.uni.hamburg.swk.extractor.gui.callback.impl.CallbackSetProjectInfo;
+import de.uni.hamburg.swk.extractor.gui.callback.impl.CallbackStatus;
+import de.uni.hamburg.swk.extractor.gui.controller.AlternativeController;
+import de.uni.hamburg.swk.extractor.gui.controller.DecisionPointController;
+import de.uni.hamburg.swk.extractor.gui.controller.ExtractionController;
+import de.uni.hamburg.swk.extractor.gui.controller.FeatureTreeController;
+import de.uni.hamburg.swk.extractor.gui.controller.OpenController;
+import de.uni.hamburg.swk.extractor.gui.splash.SplashScreen;
+import de.uni.hamburg.swk.extractor.service.alternatives.AlternativeService;
+import de.uni.hamburg.swk.extractor.service.extraction.ExtractionService;
+import de.uni.hamburg.swk.extractor.utils.Constants;
+
+public class FormMain
+{
+
+    private final String WINDOW_TITLE = "FeatureExtractor (Version %s)";
+
+    private OpenController _openController;
+    private ExtractionController _extractionController;
+    private AlternativeController _alternativeController;
+    private DecisionPointController _decisionPointController;
+    private FeatureTreeController _featureTreeController;
+
+    protected Shell _shell;
+
+    private Table _table;
+    private Button btnExtractStop;
+    private Label _lblProjectName;
+    private Label _lblSourcesText;
+    private Label _lblConfidence;
+    private List _listTechnologies;
+    private Tree _treeFeatures;
+    private Label _lblFeaturesElementName;
+    private List _listFeaturesElement;
+    private Button _btnFeaturesReload;
+    private Label _lblCoverage;
+    private Label _lblDependencyChain;
+    private MenuItem _menuItemEditProject;
+    private Tree _treeDecisionPoints;
+
+    private Label _lblSelectionAlternativeFor;
+
+    /**
+     * Launch the application.
+     * 
+     * @param args
+     * @wbp.parser.entryPoint
+     */
+    public static void entry(String[] args)
+    {
+        SplashScreen splash = null;
+        if (OptimizationRules.R_002_SPLASH)
+        {
+            splash = new SplashScreen(new Shell(Display.getDefault()), SWT.DIALOG_TRIM | SWT.APPLICATION_MODAL);
+            splash.open();
+        }
+
+        try
+        {
+            if (OptimizationRules.R_001_INITIALIZE_DB_CONNECTION)
+            {
+                SessionService.openSession();
+            }
+
+            if (OptimizationRules.R_002_SPLASH)
+                splash.close();
+
+            FormMain window = new FormMain();
+            window.open();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Open the window.
+     */
+    public void open()
+    {
+        initializeControllers();
+
+        Display display = Display.getDefault();
+        createContents();
+        _shell.open();
+        _shell.layout();
+
+        TabFolder tab = new TabFolder(_shell, SWT.NONE);
+        tab.setBounds(10, 88, 940, 605);
+
+        Composite composite = new Composite(tab, SWT.NONE);
+
+        Button btnFiles = new Button(composite, SWT.CHECK);
+        btnFiles.setBounds(10, 10, 113, 24);
+        btnFiles.setText("Files");
+
+        Button btnStop = new Button(composite, SWT.NONE);
+        btnStop.setBounds(110, 115, 94, 36);
+        btnStop.setText("Stop");
+
+        TabItem tbtmExtract = new TabItem(tab, SWT.NONE);
+        tbtmExtract.setText("Extraction");
+
+        Composite compExtract = new Composite(tab, SWT.NONE);
+        compExtract.setForeground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
+        tbtmExtract.setControl(compExtract);
+
+        btnExtractStop = new Button(compExtract, SWT.NONE);
+        btnExtractStop.setEnabled(false);
+        btnExtractStop.setImage(SWTResourceManager.getImage(Constants.ICO_STOP));
+        btnExtractStop.addMouseListener(new MouseAdapter()
+        {
+            @Override
+            public void mouseDown(MouseEvent arg0)
+            {
+                stopExtraction();
+            }
+        });
+        btnExtractStop.setBounds(110, 10, 49, 36);
+
+        Button btnExtractStart = new Button(compExtract, SWT.NONE);
+        btnExtractStart.setImage(SWTResourceManager.getImage(Constants.ICO_SEARCH));
+        btnExtractStart.addMouseListener(new MouseAdapter()
+        {
+            @Override
+            public void mouseDown(MouseEvent arg0)
+            {
+                startExtraction(btnExtractStart);
+            }
+        });
+        btnExtractStart.setBounds(10, 10, 94, 36);
+        btnExtractStart.setText("Extract");
+
+        StyledText textExtract = new StyledText(compExtract, SWT.BORDER | SWT.V_SCROLL | SWT.H_SCROLL | SWT.MULTI);
+        textExtract.setEditable(false);
+        textExtract.setBounds(10, 52, 552, 433);
+        textExtract.setAlwaysShowScrollBars(false);
+        textExtract.setDoubleClickEnabled(false);
+
+        CallbackRegistry.register(new CallbackOutput(textExtract), ExtractionService.class);
+
+        ProgressBar progressExtract = new ProgressBar(compExtract, SWT.NONE);
+        progressExtract.setBounds(10, 491, 552, 28);
+        progressExtract.setToolTipText("Progress");
+
+        CallbackRegistry.register(new CallbackProgress(progressExtract), ExtractionService.class);
+
+        TabItem tbtmFeatures = new TabItem(tab, SWT.NONE);
+        tbtmFeatures.setText("Features");
+
+        Composite compFeatures = new Composite(tab, SWT.NONE);
+        tbtmFeatures.setControl(compFeatures);
+        compFeatures.setLayout(null);
+
+        Label lblFeaturesElement = new Label(compFeatures, SWT.NONE);
+        lblFeaturesElement.setBounds(20, 346, 69, 20);
+        lblFeaturesElement.setText("Element");
+
+        _lblFeaturesElementName = new Label(compFeatures, SWT.NONE);
+        _lblFeaturesElementName.setBounds(95, 346, 467, 20);
+
+        _listFeaturesElement = new org.eclipse.swt.widgets.List(compFeatures, SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL);
+        _listFeaturesElement.setBounds(10, 372, 552, 147);
+
+        _treeFeatures = new Tree(compFeatures, SWT.BORDER);
+        _treeFeatures.setBounds(10, 52, 552, 288);
+
+        _treeFeatures.addListener(SWT.Selection, new Listener()
+        {
+            public void handleEvent(Event e)
+            {
+                selectItem();
+            }
+        });
+
+        _btnFeaturesReload = new Button(compFeatures, SWT.NONE);
+        _btnFeaturesReload.addMouseListener(new MouseAdapter()
+        {
+            @Override
+            public void mouseDown(MouseEvent arg0)
+            {
+                loadFeatureTree();
+
+            }
+        });
+        _btnFeaturesReload.setBounds(10, 10, 94, 36);
+        _btnFeaturesReload.setImage(SWTResourceManager.getImage(Constants.ICO_RELOAD));
+        _btnFeaturesReload.setText("Load");
+
+        Label lblStatusFeatures = new Label(compFeatures, SWT.NONE);
+        lblStatusFeatures.setBounds(110, 10, 452, 20);
+
+        CallbackRegistry.register(new CallbackStatus(lblStatusFeatures), FeatureTreeController.class);
+
+        Label lblStatusExtract = new Label(compExtract, SWT.NONE);
+        lblStatusExtract.setBounds(165, 10, 397, 20);
+
+        CallbackRegistry.register(new CallbackStatus(lblStatusExtract), ExtractionService.class);
+
+        TabItem tbtmFindAlternatives = new TabItem(tab, SWT.NONE);
+        tbtmFindAlternatives.setText("Alternatives");
+
+        Composite composite_1 = new Composite(tab, SWT.NONE);
+        tbtmFindAlternatives.setControl(composite_1);
+
+        _table = new Table(composite_1, SWT.BORDER | SWT.FULL_SELECTION | SWT.VIRTUAL);
+        _table.setBounds(10, 214, 552, 155);
+        _table.setHeaderVisible(true);
+        _table.setLinesVisible(true);
+
+        StyledText textAlternatives = new StyledText(composite_1,
+                SWT.BORDER | SWT.READ_ONLY | SWT.V_SCROLL | SWT.H_SCROLL);
+        textAlternatives.setDoubleClickEnabled(false);
+        textAlternatives.setAlwaysShowScrollBars(false);
+        textAlternatives.setBounds(10, 402, 552, 83);
+
+        ProgressBar progressAlternatives = new ProgressBar(composite_1, SWT.NONE);
+        progressAlternatives.setToolTipText("Progress");
+        progressAlternatives.setBounds(10, 491, 552, 28);
+
+        Label lblStatusAlternatives = new Label(composite_1, SWT.NONE);
+        lblStatusAlternatives.setBounds(110, 10, 452, 20);
+
+        CallbackRegistry.register(new CallbackOutput(textAlternatives), AlternativeService.class);
+
+        CallbackRegistry.register(new CallbackStatus(lblStatusAlternatives), AlternativeService.class);
+
+        _listTechnologies = new List(composite_1, SWT.BORDER);
+        _listTechnologies.setBounds(10, 52, 552, 131);
+
+        _listTechnologies.addListener(SWT.Selection, new Listener()
+        {
+            public void handleEvent(Event e)
+            {
+                startDisplayAlternativesForTechnology();
+            }
+        });
+
+        Button btnAlternativesFind = new Button(composite_1, SWT.NONE);
+        btnAlternativesFind.setImage(SWTResourceManager.getImage(Constants.ICO_FIND));
+        btnAlternativesFind.addMouseListener(new MouseAdapter()
+        {
+            @Override
+            public void mouseDown(MouseEvent arg0)
+            {
+                startFindAlternatives(_listTechnologies);
+            }
+        });
+        btnAlternativesFind.setBounds(10, 10, 94, 36);
+        btnAlternativesFind.setText("Find");
+        
+        _lblSelectionAlternativeFor = new Label(composite_1, SWT.NONE);
+        _lblSelectionAlternativeFor.setBounds(10, 188, 552, 20);
+
+        TabItem tbtmDecisionPoints = new TabItem(tab, SWT.NONE);
+        tbtmDecisionPoints.setText("Decisionpoints");
+
+        Composite composite_2 = new Composite(tab, SWT.NONE);
+        tbtmDecisionPoints.setControl(composite_2);
+
+        Button btnDecisionPointsFind = new Button(composite_2, SWT.NONE);
+        btnDecisionPointsFind.setImage(SWTResourceManager.getImage(Constants.ICO_FIND));
+        btnDecisionPointsFind.addMouseListener(new MouseAdapter()
+        {
+            @Override
+            public void mouseDown(MouseEvent arg0)
+            {
+                startFindDecisionPoints();
+            }
+        });
+        btnDecisionPointsFind.setText("Find");
+        btnDecisionPointsFind.setBounds(10, 10, 94, 36);
+
+        Label lblStatusDecisionPoints = new Label(composite_2, SWT.NONE);
+        lblStatusDecisionPoints.setBounds(110, 10, 452, 20);
+        
+        _treeDecisionPoints = new Tree(composite_2, SWT.BORDER);
+        _treeDecisionPoints.setBounds(10, 52, 552, 467);
+
+        Label lblProject = new Label(_shell, SWT.NONE);
+        lblProject.setFont(SWTResourceManager.getFont("Cantarell", 11, SWT.BOLD));
+        lblProject.setBounds(10, 10, 69, 20);
+        lblProject.setText("Project");
+
+        _lblProjectName = new Label(_shell, SWT.NONE);
+        _lblProjectName.setBounds(171, 10, 415, 20);
+        _lblProjectName.setText(Constants.LABEL_NONE);
+
+        Label lblSources = new Label(_shell, SWT.NONE);
+        lblSources.setFont(SWTResourceManager.getFont("Cantarell", 11, SWT.BOLD));
+        lblSources.setBounds(10, 36, 69, 20);
+        lblSources.setText("Sources");
+
+        _lblSourcesText = new Label(_shell, SWT.NONE);
+        _lblSourcesText.setBounds(171, 36, 415, 20);
+        _lblSourcesText.setText(Constants.LABEL_NONE);
+
+        Label lblMinConfidence = new Label(_shell, SWT.NONE);
+        lblMinConfidence.setFont(SWTResourceManager.getFont("Cantarell", 11, SWT.BOLD));
+        lblMinConfidence.setBounds(10, 62, 114, 20);
+        lblMinConfidence.setText("Min Confidence");
+
+        _lblConfidence = new Label(_shell, SWT.NONE);
+        _lblConfidence.setBounds(130, 62, 41, 20);
+        _lblConfidence.setText(Constants.LABEL_NONE);
+
+        Label lblMinCoverage = new Label(_shell, SWT.NONE);
+        lblMinCoverage.setText("Min Coverage");
+        lblMinCoverage.setFont(SWTResourceManager.getFont("Cantarell", 11, SWT.BOLD));
+        lblMinCoverage.setBounds(181, 62, 103, 20);
+
+        _lblCoverage = new Label(_shell, SWT.NONE);
+        _lblCoverage.setText("N/A");
+        _lblCoverage.setBounds(290, 62, 41, 20);
+
+        Label lblMaxDependencyChain = new Label(_shell, SWT.NONE);
+        lblMaxDependencyChain.setText("Max Dependency Chain");
+        lblMaxDependencyChain.setFont(SWTResourceManager.getFont("Cantarell", 11, SWT.BOLD));
+        lblMaxDependencyChain.setBounds(337, 62, 157, 20);
+
+        _lblDependencyChain = new Label(_shell, SWT.NONE);
+        _lblDependencyChain.setBounds(500, 62, 86, 20);
+        _lblDependencyChain.setText("N/A");
+
+        showProject();
+
+        CallbackRegistry.register(new CallbackSetProjectInfo(_lblProjectName, _lblSourcesText, _lblConfidence,
+                _lblCoverage, _lblDependencyChain, _menuItemEditProject), Configuration.class);
+
+        while (!_shell.isDisposed())
+        {
+            if (!display.readAndDispatch())
+            {
+                display.sleep();
+            }
+        }
+    }
+
+    /**
+     * Create contents of the window.
+     */
+    protected void createContents()
+    {
+        Display display = Display.getDefault();
+        _shell = new Shell(display, SWT.CLOSE | SWT.TITLE | SWT.MIN);
+        _shell.setBackground(SWTResourceManager.getColor(SWT.COLOR_WIDGET_BACKGROUND));
+        _shell.setSize(964, 748);
+        _shell.setText(String.format(WINDOW_TITLE, Configuration.getVersion()));
+        _shell.setLayout(null);
+
+        Menu applicationMenu = new Menu(_shell, SWT.BAR);
+
+        _shell.setMenuBar(applicationMenu);
+
+        MenuItem menuFile = new MenuItem(applicationMenu, SWT.CASCADE);
+        menuFile.setText("File");
+
+        Menu expMenuFile = new Menu(menuFile);
+        menuFile.setMenu(expMenuFile);
+
+        MenuItem menuItemNewProject = new MenuItem(expMenuFile, SWT.NONE);
+        menuItemNewProject.addSelectionListener(new SelectionAdapter()
+        {
+            @Override
+            public void widgetSelected(SelectionEvent arg0)
+            {
+                openProjectNew();
+            }
+        });
+        menuItemNewProject.setImage(SWTResourceManager.getImage(Constants.ICO_PROJECT_ADD));
+        menuItemNewProject.setText("New Project...");
+
+        MenuItem menuItemOpenProject = new MenuItem(expMenuFile, SWT.NONE);
+        menuItemOpenProject.setImage(SWTResourceManager.getImage(Constants.ICO_PROJECT_OPEN));
+        menuItemOpenProject.addSelectionListener(new SelectionAdapter()
+        {
+            @Override
+            public void widgetSelected(SelectionEvent arg0)
+            {
+                openProjectSelect();
+            }
+        });
+        menuItemOpenProject.setText("Open Project...");
+
+        new MenuItem(expMenuFile, SWT.SEPARATOR);
+
+        MenuItem menuItemPreferences = new MenuItem(expMenuFile, SWT.NONE);
+        menuItemPreferences.setImage(SWTResourceManager.getImage(Constants.ICO_PREFERENCES));
+        menuItemPreferences.addSelectionListener(new SelectionAdapter()
+        {
+            @Override
+            public void widgetSelected(SelectionEvent arg0)
+            {
+                openPreferences();
+            }
+        });
+        menuItemPreferences.setText("Preferences");
+        menuItemPreferences.setEnabled(false);
+
+        new MenuItem(expMenuFile, SWT.SEPARATOR);
+
+        MenuItem menuItemExit = new MenuItem(expMenuFile, SWT.NONE);
+        menuItemExit.setImage(SWTResourceManager.getImage(Constants.ICO_EXIT));
+        menuItemExit.addSelectionListener(new SelectionAdapter()
+        {
+            @Override
+            public void widgetSelected(SelectionEvent arg0)
+            {
+                closeWindow();
+            }
+        });
+        menuItemExit.setText("Exit");
+
+        MenuItem menuProject = new MenuItem(applicationMenu, SWT.CASCADE);
+        menuProject.setText("Project");
+
+        Menu expMenuProject = new Menu(menuProject);
+        menuProject.setMenu(expMenuProject);
+
+        _menuItemEditProject = new MenuItem(expMenuProject, SWT.NONE);
+        _menuItemEditProject.addSelectionListener(new SelectionAdapter()
+        {
+            @Override
+            public void widgetSelected(SelectionEvent arg0)
+            {
+                openProjectEdit();
+            }
+        });
+        _menuItemEditProject.setImage(SWTResourceManager.getImage(Constants.ICO_PROJECT_EDIT));
+        _menuItemEditProject.setText("Edit...");
+
+        MenuItem mntmAk = new MenuItem(applicationMenu, SWT.CASCADE);
+        mntmAk.setText("Knowledge Base");
+
+        Menu menu = new Menu(mntmAk);
+        mntmAk.setMenu(menu);
+
+        MenuItem mntmView = new MenuItem(menu, SWT.NONE);
+        mntmView.addSelectionListener(new SelectionAdapter()
+        {
+            @Override
+            public void widgetSelected(SelectionEvent arg0)
+            {
+                openAKView();
+            }
+        });
+        mntmView.setImage(SWTResourceManager.getImage(Constants.ICO_AK));
+        mntmView.setText("View Structure");
+
+        MenuItem mntmEdit = new MenuItem(menu, SWT.NONE);
+        mntmEdit.setImage(SWTResourceManager.getImage(Constants.ICO_TECHNOLOGY));
+        mntmEdit.addSelectionListener(new SelectionAdapter()
+        {
+            @Override
+            public void widgetSelected(SelectionEvent arg0)
+            {
+                openAKEdit();
+            }
+        });
+        mntmEdit.setText("Edit Technologies...");
+
+        MenuItem mntmEditFeatures = new MenuItem(menu, SWT.NONE);
+        mntmEditFeatures.setImage(SWTResourceManager.getImage(Constants.ICO_FEATURE));
+        mntmEditFeatures.setText("Edit Features...");
+        mntmEditFeatures.setEnabled(false);
+
+        new MenuItem(menu, SWT.SEPARATOR);
+
+        MenuItem mntmConfigure = new MenuItem(menu, SWT.NONE);
+        mntmConfigure.setImage(SWTResourceManager.getImage(Constants.ICO_AK_CONFIGURE));
+        mntmConfigure.addSelectionListener(new SelectionAdapter()
+        {
+            @Override
+            public void widgetSelected(SelectionEvent arg0)
+            {
+                openAKConfigure();
+            }
+
+        });
+        mntmConfigure.setText("Configure...");
+        mntmConfigure.setEnabled(false);
+
+        MenuItem menuHelp = new MenuItem(applicationMenu, SWT.CASCADE);
+        menuHelp.setText("Help");
+
+        Menu expMenuHelp = new Menu(menuHelp);
+        menuHelp.setMenu(expMenuHelp);
+
+        MenuItem menuItemAbout = new MenuItem(expMenuHelp, SWT.NONE);
+        menuItemAbout.addSelectionListener(new SelectionAdapter()
+        {
+            @Override
+            public void widgetSelected(SelectionEvent arg0)
+            {
+                openHelp();
+            }
+
+        });
+        menuItemAbout.setImage(SWTResourceManager.getImage(Constants.ICO_HELP));
+        menuItemAbout.setText("About");
+
+    }
+
+    /**
+     * Initialize controllers
+     */
+    private void initializeControllers()
+    {
+        _openController = new OpenController();
+        _extractionController = new ExtractionController();
+        _alternativeController = new AlternativeController();
+        _decisionPointController = new DecisionPointController();
+        _featureTreeController = new FeatureTreeController();
+    }
+
+    private void openAKEdit()
+    {
+        _openController.openAKEdit(_shell);
+    }
+
+    private void openAKView()
+    {
+        _openController.openView(_shell);
+    }
+
+    private void openAKConfigure()
+    {
+        _openController.openAKConfigure(_shell);
+    }
+
+    private void openPreferences()
+    {
+        _openController.openPreferences(_shell);
+    }
+
+    private void openProjectSelect()
+    {
+        _openController.openSelectProject(_shell);
+    }
+
+    private void openProjectNew()
+    {
+        _openController.openNewProject(_shell);
+    }
+
+    private void openProjectEdit()
+    {
+        _openController.openEditProject(_shell);
+
+    }
+
+    private void openHelp()
+    {
+        _openController.openAbout(_shell);
+    }
+
+    private void showProject()
+    {
+        if (OptimizationRules.R_003_LOAD_PROJECT_FROM_CLI)
+            Configuration.loadProjectFromArgs();
+
+        _menuItemEditProject.setEnabled(Configuration.getSelectedProject() != null);
+
+        if (Configuration.getSelectedProject() != null)
+        {
+            Project p = Configuration.getSelectedProject();
+            _lblProjectName.setText(p.getName());
+            _lblSourcesText.setText(p.getSource());
+            _lblConfidence.setText(p.getMinConfidence() + "");
+            _lblCoverage.setText(p.getMinFeatureCoverage() + "");
+            _lblDependencyChain.setText(p.getMaxDependencyChain() + "");
+        }
+    }
+
+    private void startExtraction(Button btnExtractStart)
+    {
+        btnExtractStart.setEnabled(false);
+        btnExtractStop.setEnabled(true);
+        _extractionController.startExtract();
+        CallbackRegistry.register(new CallbackEnableControl(btnExtractStart, true), ExtractionController.class);
+        CallbackRegistry.register(new CallbackEnableControl(btnExtractStop, false), ExtractionController.class);
+    }
+
+    private void stopExtraction()
+    {
+        _extractionController.stopExtract();
+        btnExtractStop.setEnabled(false);
+    }
+
+    private void startFindDecisionPoints()
+    {
+        _decisionPointController.startFindDecisionpoints();
+        _decisionPointController.fill(_treeDecisionPoints);
+    }
+
+    private void startFindAlternatives(List listTechnologies)
+    {
+        _alternativeController.startFindAlternatives();
+        _alternativeController.displayTechnologiesUsed(listTechnologies);
+    }
+
+    private void startDisplayAlternativesForTechnology()
+    {
+        _alternativeController.displayAlternativesForTechnology(_table, _listTechnologies.getSelection(), _lblSelectionAlternativeFor);
+    }
+
+    private void selectItem()
+    {
+        _featureTreeController.selectItem(_treeFeatures.getSelection(), _lblFeaturesElementName, _listFeaturesElement);
+    }
+
+    private void loadFeatureTree()
+    {
+        _btnFeaturesReload.setEnabled(false);
+
+        CallbackRegistry.register(new CallbackEnableControl(_btnFeaturesReload, true), FeatureTreeController.class);
+
+        _featureTreeController.loadTree(_treeFeatures);
+    }
+
+    private void closeWindow()
+    {
+        SessionService.kill();
+        _shell.dispose();
+    }
+}
