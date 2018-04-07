@@ -1,0 +1,43 @@
+Package;File;Feature;Technology;Confidence
+src.de.uni.hamburg.swk.extractor.configuration;DatabaseConfigurationService.java;SessionFactory;Hibernate;0.8333334
+src.de.uni.hamburg.swk.extractor.configuration;DatabaseConfigurationService.java;Session;Hibernate;0.46666667
+src.de.uni.hamburg.swk.extractor.management;ManagementCommand.java;Session;Hibernate;0.46666667
+src.de.uni.hamburg.swk.extractor.management;ManagementCommandTikZ.java;Session;Hibernate;0.46666667
+src.de.uni.hamburg.swk.extractor.utils;Messages.java;SessionFactory;Hibernate;0.46666667
+src.de.uni.hamburg.swk.extractor.utils;Messages.java;Session;Hibernate;0.46666667
+src.de.uni.hamburg.swk.extractor.database.dao;AbstractDAO.java;Session;Hibernate;0.86666673
+src.de.uni.hamburg.swk.extractor.database;SessionService.java;SessionFactory;Hibernate;0.86666673
+src.de.uni.hamburg.swk.extractor.database;SessionService.java;Session;Hibernate;0.91515136
+src.de.uni.hamburg.swk.extractor.gui.callback;CallbackRegistry.java;JDBC Work;Hibernate;0.46666667
+src.de.uni.hamburg.swk.extractor.gui.callback.impl;CallbackEnableControl.java;JDBC Work;Hibernate;0.46666667
+src.de.uni.hamburg.swk.extractor.gui.callback.impl;CallbackWorkFinished.java;JDBC Work;Hibernate;0.46666667
+src.de.uni.hamburg.swk.extractor.gui.dialog;DialogProjectOpen.java;Session;Hibernate;0.46666667
+src.de.uni.hamburg.swk.extractor.gui.dialog;DialogProjectNewEdit.java;Session;Hibernate;0.46666667
+src.de.uni.hamburg.swk.extractor.gui.dialog;DialogProjectNewEdit.java;Transactions;Hibernate;0.7
+src.de.uni.hamburg.swk.extractor.gui.controller;AbstractKnowledgeBaseEditController.java;Session;Hibernate;0.46666667
+src.de.uni.hamburg.swk.extractor.gui.controller;AbstractKnowledgeBaseEditController.java;Transactions;Hibernate;0.7
+src.de.uni.hamburg.swk.extractor.gui.controller.edit;EditTechnologyFeatureController.java;Session;Hibernate;0.46666667
+src.de.uni.hamburg.swk.extractor.gui.controller.edit;EditTechnologySolutionController.java;Session;Hibernate;0.46666667
+src.de.uni.hamburg.swk.extractor.gui.controller.edit;EditFeatureController.java;Session;Hibernate;0.46666667
+src.de.uni.hamburg.swk.extractor.gui.controller.edit;EditIndicatorController.java;Session;Hibernate;0.46666667
+src.de.uni.hamburg.swk.extractor.gui.form;FormMain.java;Session;Hibernate;0.46666667
+src.de.uni.hamburg.swk.extractor.startup;StartUp.java;Session;Hibernate;0.46666667
+src.de.uni.hamburg.swk.extractor.service.alternatives;AlternativeService.java;JDBC Work;Hibernate;0.46666667
+src.de.uni.hamburg.swk.extractor.service.alternatives;AlternativeService.java;Session;Hibernate;0.46666667
+src.de.uni.hamburg.swk.extractor.service.alternatives;AlternativeService.java;Transactions;Hibernate;0.7
+src.de.uni.hamburg.swk.extractor.service.extraction.sub;PreScanService.java;Session;Hibernate;0.46666664
+src.de.uni.hamburg.swk.extractor.service.extraction.sub;PreScanService.java;Transactions;Hibernate;0.7
+src.de.uni.hamburg.swk.extractor.service.extraction.sub;ConcurrentElementScanService.java;Session;Hibernate;0.46666667
+src.de.uni.hamburg.swk.extractor.service.extraction.sub;LinearElementScanService.java;Session;Hibernate;0.46666667
+src.de.uni.hamburg.swk.extractor.service.extraction.sub;PostProcessingService.java;Session;Hibernate;0.46666667
+src.de.uni.hamburg.swk.extractor.service.extraction.sub;PostProcessingService.java;Transactions;Hibernate;0.7
+src.de.uni.hamburg.swk.extractor.service.extraction.rule.java;RuleTypeUsage.java;PersistentBag;Hibernate;0.46666667
+src.de.uni.hamburg.swk.extractor.service.extraction;ExtractionService.java;Session;Hibernate;0.46666667
+src.de.uni.hamburg.swk.extractor.service.extraction;ExtractionService.java;Transactions;Hibernate;0.7
+src.de.uni.hamburg.swk.extractor.service.decisionpoints;DecisionPointService.java;Session;Hibernate;0.46666667
+src.de.uni.hamburg.swk.extractor.service.decisionpoints;DecisionPointService.java;Transactions;Hibernate;0.7
+src;mapping.hbm.xml;m-n Relations (Configuration);Hibernate;0.33333334
+src;mapping.hbm.xml;n-1 Relations (Configuration);Hibernate;0.66666675
+src;mapping.hbm.xml;1-1 Relations (Configuration);Hibernate;0.33333334
+src;mapping.hbm.xml;1-n Relations (Configuration);Hibernate;0.33333334
+src;hibernate.cfg.xml;Support MySQL;Hibernate;0.59999996

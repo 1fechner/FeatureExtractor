@@ -1,0 +1,5 @@
+Package;File;Feature;Technology;Confidence
+src.de.uni.hamburg.swk.extractor.configuration;DatabaseConfigurationService.java;SessionFactory;Hibernate;0.8333334
+src.de.uni.hamburg.swk.extractor.database.dao;AbstractDAO.java;Session;Hibernate;0.86666673
+src.de.uni.hamburg.swk.extractor.database;SessionService.java;SessionFactory;Hibernate;0.86666673
+src.de.uni.hamburg.swk.extractor.database;SessionService.java;Session;Hibernate;0.91515136

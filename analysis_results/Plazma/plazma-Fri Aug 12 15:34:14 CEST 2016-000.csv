@@ -1,0 +1,407 @@
+Package,File,Feature,Technology,Confidence,Used
+bs.base.configuration.conf,jdbc-examples.properties,Support MySQL,Hibernate,0.29999998,T
+bs.base.configuration.conf.install,jdbc-demo.properties,Support MySQL,Hibernate,0.29999998,T
+bs.base.configuration.conf.install,jdbc.properties,Support MySQL,Hibernate,0.29999998,T
+bs.base.configuration.conf,jdbc.properties,Support MySQL,Hibernate,0.29999998,T
+bs.base.src.org.plazmaforge.bsolution.project.common.beans,Task.java,JDBC Work,Hibernate,0.4666665,N
+bs.base.src.org.plazmaforge.bsolution.base,EnterpriseEnvironment.java,Session,Hibernate,0.46666652,N
+framework.client.src.org.plazmaforge.framework.client.forms,AbstractFormController.java,EntityManager,JPA,0.46666655,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.finance.client.swt.acceptors,PensionReportDialog.java,JDBC Work,Hibernate,0.46666655,N
+bs.base.client.swing.src.org.plazmaforge.bsolution.goods.client.swing.forms,ExecWorkItemEdit.java,JDBC Work,Hibernate,0.46666655,N
+framework.src.org.plazmaforge.framework.platform.service.impl.ejb,EJBServiceEnvironment.java,Session,Hibernate,0.46666655,N
+bs.base.client.swing.src.org.plazmaforge.bsolution.goods.client.swing.forms,ExecWorkEdit.java,JDBC Work,Hibernate,0.46666658,N
+bs.base.src.org.plazmaforge.bsolution.project.common.beans,TaskWorkerLink.java,JDBC Work,Hibernate,0.46666658,N
+framework.client.swing.src.org.plazmaforge.framework.client.swing.forms,EXTEditForm.java,JDBC Work,Hibernate,0.4666666,N
+framework.client.src.org.plazmaforge.framework.client.controls,ControlProxy.java,DataSource,Java SQL,0.46666664,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.project.client.swt.forms,messages.properties,JDBC Work,Hibernate,0.46666664,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.base.client,SWTClientApplicationManager.java,EntityManager,JPA,0.46666664,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.organization.client.swt.forms,AbstractOrganizableEditForm.java,Session,Hibernate,0.46666664,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.document.client.swt.forms,AbstractDocumentListForm.java,Session,Hibernate,0.46666664,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.payroll.client.swt.forms,InputWorktimeListForm.java,JDBC Work,Hibernate,0.46666664,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.payroll.client.swt.forms,PayrollEditForm.java,JDBC Work,Hibernate,0.46666664,N
+bs.base.client.swt.classes.org.plazmaforge.bsolution.project.client.swt.forms,messages.properties,JDBC Work,Hibernate,0.46666664,N
+framework.erm.src.org.plazmaforge.framework.erm.sql,SQLExecutor.java,EntityManager,JPA,0.46666664,N
+framework.erm.src.org.plazmaforge.framework.erm.sql,SQLEntityManager.java,EntityManager,JPA,0.46666664,N
+framework.client.swt.src.org.plazmaforge.framework.client.swt.controls,AbstractControl.java,DataSource,Java SQL,0.46666664,N
+bs.base.client.swing.src.org.plazmaforge.bsolution.goods.client.swing.forms,ExecWorkList.java,JDBC Work,Hibernate,0.46666664,N
+bs.base.client.swing.src.org.plazmaforge.bsolution.payroll.client.swing.forms,PayrollEdit.java,JDBC Work,Hibernate,0.46666664,N
+framework.client.swing.src.org.plazmaforge.framework.client.swing.forms,EXTParentEditForm.java,JDBC Work,Hibernate,0.46666664,N
+framework.src.org.plazmaforge.framework.sql,ResultSetReader.java,Blobs,Java SQL,0.46666664,N
+framework.src.org.plazmaforge.framework.service.impl,AbstractService.java,EntityManager,JPA,0.46666664,N
+bs.base.src.org.plazmaforge.bsolution.bank.server.services,BankImporter.java,Establishing direct Database Connection,Java SQL,0.46666664,N
+bs.base.src.org.plazmaforge.bsolution.bank.server.services,ERMPaymentLinkManager.java,EntityManager,JPA,0.46666664,N
+bs.base.src.org.plazmaforge.bsolution.product.server.services,ProductManagerServiceImpl.java,Establishing direct Database Connection,Java SQL,0.46666664,N
+bs.base.src.org.plazmaforge.bsolution.finance.server.services,ERMEntryCalculateFinder.java,EntityManager,JPA,0.46666664,N
+bs.base.src.org.plazmaforge.bsolution.finance.common.acceptors,BPensionReportByYearDialogAcceptor.java,JDBC Work,Hibernate,0.46666664,N
+bs.base.src.org.plazmaforge.bsolution.payroll.common.beans,EmployeeTotal.java,JDBC Work,Hibernate,0.46666664,N
+bs.base.src.org.plazmaforge.bsolution.payroll.common.beans,EmployeePayroll.java,JDBC Work,Hibernate,0.46666664,N
+bs.base.src.org.plazmaforge.bsolution.payroll.common.beans,Payroll.java,JDBC Work,Hibernate,0.46666664,N
+bs.base.configuration.conf,application-context-ds.xml,DataSource,Java SQL,0.46666667,N
+bs.base.configuration.conf,report-config.xml,JDBC Work,Hibernate,0.46666667,N
+bs.base.configuration.conf,report-config.properties,JDBC Work,Hibernate,0.46666667,N
+bs.base.configuration.conf,application-context.xml,DataSource,Java SQL,0.46666667,N
+bs.base.configuration.conf.ui.swing,menubar-config.xml,JDBC Work,Hibernate,0.46666667,N
+bs.base.configuration.conf.ui.swing,action-config.xml,JDBC Work,Hibernate,0.46666667,N
+bs.base.configuration.conf.ui.swt,action-config.properties,JDBC Work,Hibernate,0.46666667,N
+bs.base.configuration.conf.ui.swt,action-config_ru.properties,JDBC Work,Hibernate,0.46666667,N
+bs.base.configuration.conf.ui.swt,menubar-config.xml,JDBC Work,Hibernate,0.46666667,N
+bs.base.configuration.conf.ui.swt,action-config.xml,JDBC Work,Hibernate,0.46666667,N
+bs.base.configuration.conf.ui.swt,action-config_bg.properties,JDBC Work,Hibernate,0.46666667,N
+bs.base.configuration.conf,report-config_bg.properties,JDBC Work,Hibernate,0.46666667,N
+bs.base.configuration.conf,report-config_ru.properties,JDBC Work,Hibernate,0.46666667,N
+framework.client.src.org.plazmaforge.framework.client.forms,IFormController.java,EntityManager,JPA,0.46666667,N
+framework.client.src.org.plazmaforge.framework.client.forms,IForm.java,DataSource,Java SQL,0.46666667,N
+framework.client.src.org.plazmaforge.framework.client.forms,AbstractEntityProvider.java,EntityManager,JPA,0.46666667,N
+framework.client.src.org.plazmaforge.framework.client.forms,AbstractListFormController.java,EntityManager,JPA,0.46666667,N
+framework.client.src.org.plazmaforge.framework.client.forms,AbstractFormController.java,DataSource,Java SQL,0.46666667,N
+framework.client.src.org.plazmaforge.framework.client.forms,IEntityProvider.java,EntityManager,JPA,0.46666667,N
+framework.client.src.org.plazmaforge.framework.client.forms,FormModel.java,DataSource,Java SQL,0.46666667,N
+framework.client.src.org.plazmaforge.framework.client.forms,IFormModel.java,DataSource,Java SQL,0.46666667,N
+framework.client.src.org.plazmaforge.framework.client,Environment.java,EntityManager,JPA,0.46666667,N
+framework.client.src.org.plazmaforge.framework.client.controls,IControl.java,DataSource,Java SQL,0.46666667,N
+framework.client.src.org.plazmaforge.framework.client,Toolkit.java,EntityManager,JPA,0.46666667,N
+framework.client.src.org.plazmaforge.framework.client,IEntityManager.java,EntityManager,JPA,0.46666667,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.project.client.swt.forms,ProjectStageLinkEditForm.java,DataSource,Java SQL,0.46666667,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.project.client.swt.forms,TaskContactLinkEditForm.java,DataSource,Java SQL,0.46666667,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.project.client.swt.forms,messages_ru.properties,JDBC Work,Hibernate,0.46666667,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.project.client.swt.forms,TaskWorkerLinkEditForm.java,DataSource,Java SQL,0.46666667,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.project.client.swt.forms,TaskWorkerLinkEditForm.java,JDBC Work,Hibernate,0.46666667,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.project.client.swt.forms,ProjectContactLinkEditForm.java,DataSource,Java SQL,0.46666667,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.project.client.swt.forms,TaskEditForm.java,JDBC Work,Hibernate,0.46666667,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.base.client.swt.forms,FileEditForm.java,DataSource,Java SQL,0.46666667,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.base.client.swt.forms,AttributeEditForm.java,DataSource,Java SQL,0.46666667,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.base.client.swt.forms,ReportEditForm.java,EntityManager,JPA,0.46666667,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.base.client.swt.forms,ReportEditForm.java,DataSource,Java SQL,0.46666667,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.base.client.swt.forms,SystemInfoEditForm.java,DataSource,Java SQL,0.46666667,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.base.client.swt.forms,SplashForm.java,JDBC Work,Hibernate,0.46666667,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.base.client.swt.forms,AttributeValueEditForm.java,DataSource,Java SQL,0.46666667,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.base.client.swt.forms,ReportListForm.java,DataSource,Java SQL,0.46666667,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.base.client.swt.forms.common,DataTypeController.java,EntityManager,JPA,0.46666667,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.base.client.swt.actions,RegisterPeriodAction.java,Session,Hibernate,0.46666667,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.base.client.swt.dialogs,LoginDialog.java,Session,Hibernate,0.46666667,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.base.client.swt.dialogs,InputDialog.java,Session,Hibernate,0.46666667,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.base.client.swt.dialogs,AboutDialog.java,JDBC Work,Hibernate,0.46666667,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.base.client.swt,RCPEntityManager.java,EntityManager,JPA,0.46666667,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.base.client,SWTClientApplicationManager.java,Session,Hibernate,0.46666667,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.security.client.swt.forms,UserEditForm.java,Session,Hibernate,0.46666667,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.security.client.swt.forms,UserRoleEditForm.java,DataSource,Java SQL,0.46666667,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.organization.client.swt.forms,AbstractOrganizableListForm.java,Session,Hibernate,0.46666667,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.organization.client.swt.actions,OrganizationEditAction.java,Session,Hibernate,0.46666667,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.contact.client.swt.forms,PhoneEditForm.java,DataSource,Java SQL,0.46666667,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.contact.client.swt.forms,EmailEditForm.java,DataSource,Java SQL,0.46666667,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.contact.client.swt.forms,AddressEditForm.java,DataSource,Java SQL,0.46666667,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.contact.client.swt.forms,WebEditForm.java,DataSource,Java SQL,0.46666667,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.pim.client.swt.forms,PIMCalendarForm.java,Session,Hibernate,0.46666667,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.pim.client.swt.forms,PIMCalendarForm.java,DataSource,Java SQL,0.46666667,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.pim.client.swt.forms,PIMReminderEditForm.java,Session,Hibernate,0.46666667,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.pim.client.swt.forms,PIMNoteEditForm.java,Session,Hibernate,0.46666667,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.bank.client.swt.forms,AbstractPaymentDocumentEditForm.java,Session,Hibernate,0.46666667,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.bank.client.swt.forms.common,BankAccountReportDialog.java,Session,Hibernate,0.46666667,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.product.client.swt.forms,ProductInstanceEditForm.java,DataSource,Java SQL,0.46666667,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.product.client.swt.forms,ProductUnitEditForm.java,DataSource,Java SQL,0.46666667,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.product.client.swt.forms,ProductPriceEditForm.java,DataSource,Java SQL,0.46666667,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.document.client.swt.forms,AbstractDocumentEditForm.java,Session,Hibernate,0.46666667,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.partner.client.swt.forms,PartnerBankAccountEditForm.java,DataSource,Java SQL,0.46666667,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.partner.client.swt.forms,PartnerActivityTypeLinkEditForm.java,DataSource,Java SQL,0.46666667,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.partner.client.swt.forms,PartnerListForm.java,Session,Hibernate,0.46666667,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.partner.client.swt.forms,PartnerRepresentativeEditForm.java,DataSource,Java SQL,0.46666667,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.partner.client.swt.forms,PartnerCategoryLinkEditForm.java,DataSource,Java SQL,0.46666667,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.goods.client.swt.forms,AbstractGoodsDocumentItemEditForm.java,DataSource,Java SQL,0.46666667,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.finance.client.swt.acceptors,messages.properties,JDBC Work,Hibernate,0.46666667,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.finance.client.swt.acceptors,messages_ru.properties,JDBC Work,Hibernate,0.46666667,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.finance.client.swt.acceptors,PensionReport26Dialog.java,JDBC Work,Hibernate,0.46666667,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.finance.client.swt.forms,PartnerRestEditForm.java,Session,Hibernate,0.46666667,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.finance.client.swt.forms,LedgerAccountRestEditForm.java,Session,Hibernate,0.46666667,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.finance.client.swt.forms,TemplateEntryItemEditForm.java,DataSource,Java SQL,0.46666667,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.finance.client.swt.forms,AbstractFinanceDocumentEditForm.java,Session,Hibernate,0.46666667,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.finance.client.swt.actions,EntryCalculateAction.java,Session,Hibernate,0.46666667,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.finance.client.swt.actions,EntryRemoveAction.java,Session,Hibernate,0.46666667,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.employee.client.swt.forms,AbstractEmployableListForm.java,Session,Hibernate,0.46666667,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.payroll.client.swt.forms,messages.properties,JDBC Work,Hibernate,0.46666667,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.payroll.client.swt.forms,InputWorktimeEditForm.java,JDBC Work,Hibernate,0.46666667,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.payroll.client.swt.forms,EmployeeVacationAverangeEditForm.java,DataSource,Java SQL,0.46666667,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.payroll.client.swt.forms,messages_ru.properties,JDBC Work,Hibernate,0.46666667,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.payroll.client.swt.forms,EmployeeSicklistAverangeEditForm.java,DataSource,Java SQL,0.46666667,N
+bs.base.client.swt.src.org.plazmaforge.bsolution.payroll.client.swt.actions,PayrollCalculateAction.java,Session,Hibernate,0.46666667,N
+bs.base.client.swt.classes.org.plazmaforge.bsolution.project.client.swt.forms,messages_ru.properties,JDBC Work,Hibernate,0.46666667,N
+bs.base.client.swt.classes.org.plazmaforge.bsolution.finance.client.swt.acceptors,messages.properties,JDBC Work,Hibernate,0.46666667,N
+bs.base.client.swt.classes.org.plazmaforge.bsolution.finance.client.swt.acceptors,messages_ru.properties,JDBC Work,Hibernate,0.46666667,N
+bs.base.client.swt.classes.org.plazmaforge.bsolution.payroll.client.swt.forms,messages.properties,JDBC Work,Hibernate,0.46666667,N
+bs.base.client.swt.classes.org.plazmaforge.bsolution.payroll.client.swt.forms,messages_ru.properties,JDBC Work,Hibernate,0.46666667,N
+framework.erm.src.org.plazmaforge.framework.erm.trigger,SLTrigger.java,EntityManager,JPA,0.46666667,N
+framework.erm.src.org.plazmaforge.framework.erm.trigger,AbstractTrigger.java,EntityManager,JPA,0.46666667,N
+framework.erm.src.org.plazmaforge.framework.erm.query,DeleteExecutor.java,EntityManager,JPA,0.46666667,N
+framework.erm.src.org.plazmaforge.framework.erm.query,InsertExecutor.java,EntityManager,JPA,0.46666667,N
+framework.erm.src.org.plazmaforge.framework.erm.query,SelectExecutor.java,EntityManager,JPA,0.46666667,N
+framework.erm.src.org.plazmaforge.framework.erm.query,QueryExecutor.java,EntityManager,JPA,0.46666667,N
+framework.erm.src.org.plazmaforge.framework.erm.query,UpdateExecutor.java,EntityManager,JPA,0.46666667,N
+framework.erm.src.org.plazmaforge.framework.erm.query,ModifyExecutor.java,EntityManager,JPA,0.46666667,N
+framework.erm.src.org.plazmaforge.framework.erm.procedure,AbstractProcedure.java,EntityManager,JPA,0.46666667,N
+framework.erm.src.org.plazmaforge.framework.erm,EntityManager.java,EntityManager,JPA,0.46666667,N
+framework.erm.test.org.plazmaforge.framework.erm.sql,SQLExecutorTest.java,EntityManager,JPA,0.46666667,N
+framework.erm.test.org.plazmaforge.framework.erm.storage,XMLReaderTest.java,Establishing direct Database Connection,Java SQL,0.46666667,N
+bs.base.reportstorage.reports.bank.UA.uk,PaymentOld.jrxml,DataSource,Java SQL,0.46666667,N
+bs.base.reportstorage.reports.bank.RU.ru,Payment.jrxml,DataSource,Java SQL,0.46666667,N
+bs.base.reportstorage.reports.goods,ExecWorkByPartner.jrxml,JDBC Work,Hibernate,0.46666667,N
+bs.base.reportstorage.reports.goods,ExecWorkList.jrxml,JDBC Work,Hibernate,0.46666667,N
+bs.base.reportstorage.reports.goods.RU.ru,ExecWorkByPartner.jrxml,JDBC Work,Hibernate,0.46666667,N
+bs.base.reportstorage.reports.goods.RU.ru,ExecWorkList.jrxml,JDBC Work,Hibernate,0.46666667,N
+framework.client.swt.src.org.plazmaforge.framework.client.swt.views,TableSorter.java,JDBC Work,Hibernate,0.46666667,N
+framework.client.swt.src.org.plazmaforge.framework.client.swt.views,TableFilter.java,JDBC Work,Hibernate,0.46666667,N
+framework.client.swt.src.org.plazmaforge.framework.client.swt.forms,AbstractListForm.java,DataSource,Java SQL,0.46666667,N
+framework.client.swt.src.org.plazmaforge.framework.client.swt.forms,AbstractListForm.java,JDBC Work,Hibernate,0.46666667,N
+framework.client.swt.src.org.plazmaforge.framework.client.swt.forms,AbstractForm.java,EntityManager,JPA,0.46666667,N
+framework.client.swt.src.org.plazmaforge.framework.client.swt.forms,AbstractForm.java,DataSource,Java SQL,0.46666667,N
+framework.client.swt.src.org.plazmaforge.framework.client.swt.forms,AbstractEditForm.java,DataSource,Java SQL,0.46666667,N
+framework.client.swt.src.org.plazmaforge.framework.client.swt.controls,FixMenuManager.java,JDBC Work,Hibernate,0.46666667,N
+framework.client.swt.src.org.plazmaforge.framework.client.swt.controls,XComboEdit.java,EntityManager,JPA,0.46666667,N
+bs.base.client.swing.src.org.plazmaforge.bsolution.base.client.swing.forms,LoginFrame.java,Session,Hibernate,0.46666667,N
+bs.base.client.swing.src.org.plazmaforge.bsolution.base.client.swing.actions,RegisterPeriodAction.java,Session,Hibernate,0.46666667,N
+bs.base.client.swing.src.org.plazmaforge.bsolution.base.client,SwingClientApplicationManager.java,Session,Hibernate,0.46666667,N
+bs.base.client.swing.src.org.plazmaforge.bsolution.organization.client.swing.forms,OrganizationList.java,Session,Hibernate,0.46666667,N
+bs.base.client.swing.src.org.plazmaforge.bsolution.organization.client.swing.forms,AbstractOrganizableList.java,Session,Hibernate,0.46666667,N
+bs.base.client.swing.src.org.plazmaforge.bsolution.organization.client.swing.forms,AbstractOrganizableEdit.java,Session,Hibernate,0.46666667,N
+bs.base.client.swing.src.org.plazmaforge.bsolution.organization.client.swing.actions,OrganizationEditAction.java,Session,Hibernate,0.46666667,N
+bs.base.client.swing.src.org.plazmaforge.bsolution.contact.client.swing.forms,AbstractContactableEdit.java,Session,Hibernate,0.46666667,N
+bs.base.client.swing.src.org.plazmaforge.bsolution.bank.client.swing.forms,BankEdit.java,JDBC Work,Hibernate,0.46666667,N
+bs.base.client.swing.src.org.plazmaforge.bsolution.document.client.swing.forms,AbstractDocumentEdit.java,Session,Hibernate,0.46666667,N
+bs.base.client.swing.src.org.plazmaforge.bsolution.document.client.swing.forms,AbstractDocumentList.java,Session,Hibernate,0.46666667,N
+bs.base.client.swing.src.org.plazmaforge.bsolution.document.client.swing.forms,AbstractDocumentParentEdit.java,Session,Hibernate,0.46666667,N
+bs.base.client.swing.src.org.plazmaforge.bsolution.partner.client.swing.forms,PartnerEdit.java,JDBC Work,Hibernate,0.46666667,N
+bs.base.client.swing.src.org.plazmaforge.bsolution.goods.client.swing.actions,ExecWorkListAction.java,JDBC Work,Hibernate,0.46666667,N
+bs.base.client.swing.src.org.plazmaforge.bsolution.goods.client.swing,GUIGoodsEnvironment.java,Session,Hibernate,0.46666667,N
+bs.base.client.swing.src.org.plazmaforge.bsolution.finance.client.swing.forms,PartnerRestEdit.java,Session,Hibernate,0.46666667,N
+bs.base.client.swing.src.org.plazmaforge.bsolution.finance.client.swing.forms,LedgerAccountRestEdit.java,Session,Hibernate,0.46666667,N
+bs.base.client.swing.src.org.plazmaforge.bsolution.finance.client.swing.actions,EntryCalculateAction.java,Session,Hibernate,0.46666667,N
+bs.base.client.swing.src.org.plazmaforge.bsolution.employee.client.swing.forms,EmployeeEdit.java,Session,Hibernate,0.46666667,N
+bs.base.client.swing.src.org.plazmaforge.bsolution.payroll.client.swing.forms,EmployeeLeaveAverangeEdit.java,JDBC Work,Hibernate,0.46666667,N
+bs.base.client.swing.src.org.plazmaforge.bsolution.payroll.client.swing.forms,EmployeeLeaveEdit.java,JDBC Work,Hibernate,0.46666667,N
+bs.base.client.swing.src.org.plazmaforge.bsolution.payroll.client.swing.forms,InputWorktimeEdit.java,JDBC Work,Hibernate,0.46666667,N
+bs.base.client.swing.src.org.plazmaforge.bsolution.payroll.client.swing.forms,EmployeeSicklistAverangeEdit.java,JDBC Work,Hibernate,0.46666667,N
+bs.base.client.swing.src.org.plazmaforge.bsolution.payroll.client.swing.forms,InputWorktimeList.java,JDBC Work,Hibernate,0.46666667,N
+bs.base.client.swing.src.org.plazmaforge.bsolution.payroll.client.swing.actions,InputWorktimeListAction.java,JDBC Work,Hibernate,0.46666667,N
+bs.base.client.swing.src.org.plazmaforge.bsolution.payroll.client.swing.actions,PayrollCalculateAction.java,Session,Hibernate,0.46666667,N
+framework.client.swing.src.org.plazmaforge.framework.client.swing.forms,EXTFormWorker.java,JDBC Work,Hibernate,0.46666667,N
+framework.client.swing.src.org.plazmaforge.framework.client.swing.forms,EXTListForm.java,JDBC Work,Hibernate,0.46666667,N
+framework,build.xml,Session,Hibernate,0.46666667,N
+framework,build.xml,SessionFactory,Hibernate,0.46666667,N
+framework.src.org.plazmaforge.framework.core.criteria,CriteriaSorterSet.java,JDBC Work,Hibernate,0.46666667,N
+framework.src.org.plazmaforge.framework.core.criteria,CriteriaFilterSet.java,JDBC Work,Hibernate,0.46666667,N
+framework.src.org.plazmaforge.framework.core.criteria,AbstractCriteriaWorker.java,JDBC Work,Hibernate,0.46666667,N
+framework.src.org.plazmaforge.framework.association,AssociationManager.java,EntityManager,JPA,0.46666667,N
+framework.src.org.plazmaforge.framework.util,ErrorTranslator.java,EntityManager,JPA,0.46666667,N
+framework.src.org.plazmaforge.framework.util,TextWorker.java,JDBC Work,Hibernate,0.46666667,N
+framework.src.org.plazmaforge.framework.util,IEntityManager.java,EntityManager,JPA,0.46666667,N
+framework.src.org.plazmaforge.framework.security,SecureEnvironment.java,EntityManager,JPA,0.46666667,N
+framework.src.org.plazmaforge.framework.liteserver,Server.java,Establishing direct Database Connection,Java SQL,0.46666667,N
+framework.src.org.plazmaforge.framework.sql,ResultSetReaderInfo.java,Blobs,Java SQL,0.46666667,N
+framework.src.org.plazmaforge.framework.datawarehouse.convert.dataexport.xls,XLSExporter.java,JDBC Work,Hibernate,0.46666667,N
+framework.src.org.plazmaforge.framework.web,Navigator.java,Session,Hibernate,0.46666667,N
+framework.src.org.plazmaforge.framework.web,Navigator.java,JDBC Work,Hibernate,0.46666667,N
+framework.src.org.plazmaforge.framework.platform.structure.impl.spring,SpringContext.java,Session,Hibernate,0.46666667,N
+framework.src.org.plazmaforge.framework.platform.structure.impl.spring,SpringContext.java,SessionFactory,Hibernate,0.46666667,N
+framework.src.org.plazmaforge.framework.platform.structure.impl.spring,SpringContext.java,DataSource,Java SQL,0.46666667,N
+framework.src.org.plazmaforge.framework.platform,EntityEnvironment.java,EntityManager,JPA,0.46666667,N
+framework.src.org.plazmaforge.framework.platform,PlatformContext.java,Establishing direct Database Connection,Java SQL,0.46666667,N
+framework.src.org.plazmaforge.framework.platform,PlatformEnvironment.java,Establishing direct Database Connection,Java SQL,0.46666667,N
+framework.src.org.plazmaforge.framework.platform,EntityManager.java,EntityManager,JPA,0.46666667,N
+framework.src.org.plazmaforge.framework.platform,PlatformApplicationManager.java,Establishing direct Database Connection,Java SQL,0.46666667,N
+framework.src.org.plazmaforge.framework.platform.service.impl.spring,SpringServiceLocator.java,Establishing direct Database Connection,Java SQL,0.46666667,N
+framework.src.org.plazmaforge.framework.platform.service.impl.ejb.bean,EJBSessionService.java,Session,Hibernate,0.46666667,N
+framework.src.org.plazmaforge.framework.platform.service.impl.ejb.bean,StatefulService.java,Session,Hibernate,0.46666667,N
+framework.src.org.plazmaforge.framework.platform.service.impl.ejb.bean,AbstractServiceBean.java,Session,Hibernate,0.46666667,N
+framework.src.org.plazmaforge.framework.platform.service.impl.ejb.bean,StatelessServiceBean.java,Session,Hibernate,0.46666667,N
+framework.src.org.plazmaforge.framework.platform.service.impl.ejb.bean,StatelessService.java,Session,Hibernate,0.46666667,N
+framework.src.org.plazmaforge.framework.platform.service.impl.ejb.bean,StatefulServiceHome.java,Session,Hibernate,0.46666667,N
+framework.src.org.plazmaforge.framework.platform.service.impl.ejb.bean,StatelessServiceHome.java,Session,Hibernate,0.46666667,N
+framework.src.org.plazmaforge.framework.platform.service.impl.ejb,EJBServiceLocator.java,Session,Hibernate,0.46666667,N
+framework.src.org.plazmaforge.framework.report,ReportEngine.java,DataSource,Java SQL,0.46666667,N
+framework.src.org.plazmaforge.framework.report,AbstractReportEngine.java,DataSource,Java SQL,0.46666667,N
+framework.src.org.plazmaforge.framework.report.engine.jasperreports,JasperReportsEngine.java,DataSource,Java SQL,0.46666667,N
+framework.src.org.plazmaforge.framework.report.engine.jasperreports,TableDataSource.java,DataSource,Java SQL,0.46666667,N
+framework.src.org.plazmaforge.framework.dao,DAOContext.java,Establishing direct Database Connection,Java SQL,0.46666667,N
+framework.src.org.plazmaforge.framework.service.impl,AbstractEntityService.java,EntityManager,JPA,0.46666667,N
+framework.src.org.plazmaforge.framework.service.impl,AbstractDao.java,EntityManager,JPA,0.46666667,N
+framework.src,log4j.properties,Establishing direct Database Connection,Java SQL,0.46666667,N
+framework.classes,log4j.properties,Establishing direct Database Connection,Java SQL,0.46666667,N
+bs.base.src.org.plazmaforge.bsolution.project.server.services,ERMProjectContextService.java,EntityManager,JPA,0.46666667,N
+bs.base.src.org.plazmaforge.bsolution.project.server.services,ERMTaskContextService.java,EntityManager,JPA,0.46666667,N
+bs.base.src.org.plazmaforge.bsolution.project.server.services,ERMProjectService.java,EntityManager,JPA,0.46666667,N
+bs.base.src.org.plazmaforge.bsolution.project.server.entities,Task.erm.xml,JDBC Work,Hibernate,0.46666667,N
+bs.base.src.org.plazmaforge.bsolution.project.server.entities,TaskWorkerLink.erm.xml,JDBC Work,Hibernate,0.46666667,N
+bs.base.src.org.plazmaforge.bsolution.base,EnterprisePeriodCreator.java,Session,Hibernate,0.46666667,N
+bs.base.src.org.plazmaforge.bsolution.base,SessionEnvironment.java,Session,Hibernate,0.46666667,N
+bs.base.src.org.plazmaforge.bsolution.base,EnterpriseConfigLoader.java,Session,Hibernate,0.46666667,N
+bs.base.src.org.plazmaforge.bsolution.base.server.services,FileServiceImpl.java,EntityManager,JPA,0.46666667,N
+bs.base.src.org.plazmaforge.bsolution.base.server.services,ERMBusinessableManager.java,EntityManager,JPA,0.46666667,N
+bs.base.src.org.plazmaforge.bsolution.base.server.services,ERMFileManager.java,EntityManager,JPA,0.46666667,N
+bs.base.src.org.plazmaforge.bsolution.base.server.services,AttributeValueServiceImpl.java,EntityManager,JPA,0.46666667,N
+bs.base.src.org.plazmaforge.bsolution.base.server.services,PeriodServiceImpl.java,EntityManager,JPA,0.46666667,N
+bs.base.src.org.plazmaforge.bsolution.base.server.services,ERMAttributeManager.java,EntityManager,JPA,0.46666667,N
+bs.base.src.org.plazmaforge.bsolution.base.server.services,LookupServiceImpl.java,Establishing direct Database Connection,Java SQL,0.46666667,N
+bs.base.src.org.plazmaforge.bsolution.base.server.services,LookupServiceImpl.java,EntityManager,JPA,0.46666667,N
+bs.base.src.org.plazmaforge.bsolution.base.server.services,AttributeServiceImpl.java,Establishing direct Database Connection,Java SQL,0.46666667,N
+bs.base.src.org.plazmaforge.bsolution.base.server.services,AttributeServiceImpl.java,EntityManager,JPA,0.46666667,N
+bs.base.src.org.plazmaforge.bsolution.base.server.services,SystemEntityServiceImpl.java,EntityManager,JPA,0.46666667,N
+bs.base.src.org.plazmaforge.bsolution.base.server.services,TransferServiceImpl.java,Establishing direct Database Connection,Java SQL,0.46666667,N
+bs.base.src.org.plazmaforge.bsolution.base.server.services,CustomTransferServiceImpl.java,EntityManager,JPA,0.46666667,N
+bs.base.src.org.plazmaforge.bsolution.base.server.services,EnumerationServiceImpl.java,Establishing direct Database Connection,Java SQL,0.46666667,N
+bs.base.src.org.plazmaforge.bsolution.base.server.services,EnumerationServiceImpl.java,EntityManager,JPA,0.46666667,N
+bs.base.src.org.plazmaforge.bsolution.base.common.acceptors,OrganizationAcceptor.java,Session,Hibernate,0.46666667,N
+bs.base.src.org.plazmaforge.bsolution.base.common.acceptors,OrganizationDialogAcceptor.java,Session,Hibernate,0.46666667,N
+bs.base.src.org.plazmaforge.bsolution.base.common.acceptors,OrganizationPeriodAcceptor.java,Session,Hibernate,0.46666667,N
+bs.base.src.org.plazmaforge.bsolution.base.common.acceptors,OrganizationAcceptorUtilities.java,Session,Hibernate,0.46666667,N
+bs.base.src.org.plazmaforge.bsolution.base,SessionContext.java,Session,Hibernate,0.46666667,N
+bs.base.src.org.plazmaforge.bsolution.security.server.services,ERMUserService.java,Establishing direct Database Connection,Java SQL,0.46666667,N
+bs.base.src.org.plazmaforge.bsolution.security.server.services,ERMUserService.java,EntityManager,JPA,0.46666667,N
+bs.base.src.org.plazmaforge.bsolution.security.server.services,ERMPermissionService.java,EntityManager,JPA,0.46666667,N
+bs.base.src.org.plazmaforge.bsolution.organization,OrganizationEnvironment.java,Session,Hibernate,0.46666667,N
+bs.base.src.org.plazmaforge.bsolution.organization.server.services,AbstractOrganizableService.java,EntityManager,JPA,0.46666667,N
+bs.base.src.org.plazmaforge.bsolution.organization.server.services,AbstractResponsableService.java,EntityManager,JPA,0.46666667,N
+bs.base.src.org.plazmaforge.bsolution.organization.server.services,GenericWarehouseServiceImpl.java,EntityManager,JPA,0.46666667,N
+bs.base.src.org.plazmaforge.bsolution.organization.server.services,ERMWarehouseManager.java,EntityManager,JPA,0.46666667,N
+bs.base.src.org.plazmaforge.bsolution.cash,CashEnvironment.java,Session,Hibernate,0.46666667,N
+bs.base.src.org.plazmaforge.bsolution.contact.server.services,ContactServiceImpl.java,EntityManager,JPA,0.46666667,N
+bs.base.src.org.plazmaforge.bsolution.pim.server.services,ERMPIMContextService.java,EntityManager,JPA,0.46666667,N
+bs.base.src.org.plazmaforge.bsolution.bank,BankEnvironment.java,Session,Hibernate,0.46666667,N
+bs.base.src.org.plazmaforge.bsolution.product.server.services,ERMProductService.java,EntityManager,JPA,0.46666667,N
+bs.base.src.org.plazmaforge.bsolution.document,DocumentEnvironment.java,Session,Hibernate,0.46666667,N
+bs.base.src.org.plazmaforge.bsolution.document.server.services,DocumentStatusServiceImpl.java,EntityManager,JPA,0.46666667,N
+bs.base.src.org.plazmaforge.bsolution.document.server.services,AbstractDocumentService.java,EntityManager,JPA,0.46666667,N
+bs.base.src.org.plazmaforge.bsolution.personality.server.services,AbstractPersonItemService.java,EntityManager,JPA,0.46666667,N
+bs.base.src.org.plazmaforge.bsolution.partner.server.services,PartnerServiceImpl.java,EntityManager,JPA,0.46666667,N
+bs.base.src.org.plazmaforge.bsolution.partner.server.services,PartnerRepresentativeServiceImpl.java,EntityManager,JPA,0.46666667,N
+bs.base.src.org.plazmaforge.bsolution.partner.server.services,AbstractPartnerableService.java,EntityManager,JPA,0.46666667,N
+bs.base.src.org.plazmaforge.bsolution.partner.common.beans,Partner.java,JDBC Work,Hibernate,0.46666667,N
+bs.base.src.org.plazmaforge.bsolution.goods.server.services,GoodsImporter.java,Establishing direct Database Connection,Java SQL,0.46666667,N
+bs.base.src.org.plazmaforge.bsolution.finance.server.services,LedgerAccountServiceImpl.java,EntityManager,JPA,0.46666667,N
+bs.base.src.org.plazmaforge.bsolution.finance.server.services,ContractorServiceImpl.java,EntityManager,JPA,0.46666667,N
+bs.base.src.org.plazmaforge.bsolution.finance.server.services,EntryCalculateServiceImpl.java,EntityManager,JPA,0.46666667,N
+bs.base.src.org.plazmaforge.bsolution.finance.server.services,ERMFinanceManager.java,EntityManager,JPA,0.46666667,N
+bs.base.src.org.plazmaforge.bsolution.finance.server.services,FinanceDocumentServiceImpl.java,EntityManager,JPA,0.46666667,N
+bs.base.src.org.plazmaforge.bsolution.finance,FinanceEnvironment.java,Session,Hibernate,0.46666667,N
+bs.base.src.org.plazmaforge.bsolution.finance.common.acceptors,BTaxReportByQuarterDialogAcceptor.java,DataSource,Java SQL,0.46666667,N
+bs.base.src.org.plazmaforge.bsolution.payroll.server.services,ERMEmployeePayrollService.java,Establishing direct Database Connection,Java SQL,0.46666667,N
+bs.base.src.org.plazmaforge.bsolution.payroll.server.services,ERMEmployeePayrollService.java,EntityManager,JPA,0.46666667,N
+bs.base.src.org.plazmaforge.bsolution.payroll.server.entities,Payroll.erm.xml,JDBC Work,Hibernate,0.46666667,N
+bs.base.src.org.plazmaforge.bsolution.payroll.server.entities,EmployeeResult.erm.xml,JDBC Work,Hibernate,0.46666667,N
+bs.base.src.org.plazmaforge.bsolution.payroll.server.entities,EmployeePayroll.erm.xml,JDBC Work,Hibernate,0.46666667,N
+bs.base.src.org.plazmaforge.bsolution.payroll.server.entities,EmployeeTotal.erm.xml,JDBC Work,Hibernate,0.46666667,N
+bs.base.src.org.plazmaforge.bsolution.payroll.common.beans,EmployeeResult.java,JDBC Work,Hibernate,0.46666667,N
+bs.base.src.org.plazmaforge.bsolution.payroll.common.beans,EmployeeVacation.java,JDBC Work,Hibernate,0.46666667,N
+bs.base.src.org.plazmaforge.bsolution.payroll.common.beans,EmployeeVacationAverange.java,JDBC Work,Hibernate,0.46666667,N
+bs.base.src.org.plazmaforge.bsolution.payroll.common.beans,EmployeeSicklistAverange.java,JDBC Work,Hibernate,0.46666667,N
+bs.base.src,log4j.properties,Establishing direct Database Connection,Java SQL,0.46666667,N
+bs.base.classes.org.plazmaforge.bsolution.project.server.entities,Task.erm.xml,JDBC Work,Hibernate,0.46666667,N
+bs.base.classes.org.plazmaforge.bsolution.project.server.entities,TaskWorkerLink.erm.xml,JDBC Work,Hibernate,0.46666667,N
+bs.base.classes.org.plazmaforge.bsolution.payroll.server.entities,Payroll.erm.xml,JDBC Work,Hibernate,0.46666667,N
+bs.base.classes.org.plazmaforge.bsolution.payroll.server.entities,EmployeeResult.erm.xml,JDBC Work,Hibernate,0.46666667,N
+bs.base.classes.org.plazmaforge.bsolution.payroll.server.entities,EmployeePayroll.erm.xml,JDBC Work,Hibernate,0.46666667,N
+bs.base.classes.org.plazmaforge.bsolution.payroll.server.entities,EmployeeTotal.erm.xml,JDBC Work,Hibernate,0.46666667,N
+bs.base.classes,log4j.properties,Establishing direct Database Connection,Java SQL,0.46666667,N
+framework.erm.src.org.plazmaforge.framework.erm.dialect,DialectFactory.java,Establishing direct Database Connection,Java SQL,0.8,T
+framework.erm.src.org.plazmaforge.framework.erm.dialect,Dialect.java,Establishing direct Database Connection,Java SQL,0.8,T
+framework.erm.src.org.plazmaforge.framework.erm.trigger,SQLTrigger.java,Prepared Statements,Java SQL,0.8,T
+framework.erm.src.org.plazmaforge.framework.erm.trigger,AbstractTrigger.java,Establishing direct Database Connection,Java SQL,0.8,T
+framework.erm.src.org.plazmaforge.framework.erm.trigger,Trigger.java,Establishing direct Database Connection,Java SQL,0.8,T
+framework.erm.src.org.plazmaforge.framework.erm.procedure,AbstractProcedure.java,Establishing direct Database Connection,Java SQL,0.8,T
+framework.erm.src.org.plazmaforge.framework.erm.procedure,Procedure.java,Establishing direct Database Connection,Java SQL,0.8,T
+framework.erm.src.org.plazmaforge.framework.erm.procedure,JavaProcedure.java,Establishing direct Database Connection,Java SQL,0.8,T
+framework.erm.src.org.plazmaforge.framework.erm.type,FloatType.java,Prepared Statements,Java SQL,0.8,T
+framework.erm.src.org.plazmaforge.framework.erm.type,DateTimeType.java,Prepared Statements,Java SQL,0.8,T
+framework.erm.src.org.plazmaforge.framework.erm.type,TimeType.java,Prepared Statements,Java SQL,0.8,T
+framework.erm.src.org.plazmaforge.framework.erm.type,StringType.java,Prepared Statements,Java SQL,0.8,T
+framework.erm.src.org.plazmaforge.framework.erm.type,YNBooleanType.java,Prepared Statements,Java SQL,0.8,T
+framework.erm.src.org.plazmaforge.framework.erm.type,TimestampType.java,Prepared Statements,Java SQL,0.8,T
+framework.erm.src.org.plazmaforge.framework.erm.type,DoubleType.java,Prepared Statements,Java SQL,0.8,T
+framework.erm.src.org.plazmaforge.framework.erm.type,IntegerType.java,Prepared Statements,Java SQL,0.8,T
+framework.erm.src.org.plazmaforge.framework.erm.type,ObjectType.java,Prepared Statements,Java SQL,0.8,T
+framework.erm.src.org.plazmaforge.framework.erm.type,BooleanType.java,Prepared Statements,Java SQL,0.8,T
+framework.erm.src.org.plazmaforge.framework.erm.type,DateType.java,Prepared Statements,Java SQL,0.8,T
+framework.erm.src.org.plazmaforge.framework.erm.type,Type.java,Prepared Statements,Java SQL,0.8,T
+framework.erm.src.org.plazmaforge.framework.erm.type,ByteType.java,Prepared Statements,Java SQL,0.8,T
+framework.erm.src.org.plazmaforge.framework.erm.type,LongType.java,Prepared Statements,Java SQL,0.8,T
+framework.erm.src.org.plazmaforge.framework.erm.event,Event.java,Establishing direct Database Connection,Java SQL,0.8,T
+framework.erm.src.org.plazmaforge.framework.erm.event,EventWrapper.java,Establishing direct Database Connection,Java SQL,0.8,T
+framework.erm.src.org.plazmaforge.framework.erm.generator,IncrementGenerator.java,Establishing direct Database Connection,Java SQL,0.8,T
+framework.erm.src.org.plazmaforge.framework.erm.generator,GeneratorHelper.java,Establishing direct Database Connection,Java SQL,0.8,T
+framework.erm.src.org.plazmaforge.framework.erm.generator,Generator.java,Establishing direct Database Connection,Java SQL,0.8,T
+framework.erm.src.org.plazmaforge.framework.erm.generator,SequenceGenerator.java,Establishing direct Database Connection,Java SQL,0.8,T
+framework.src.org.plazmaforge.framework.datawarehouse,TransferTriggerAdapter.java,Prepared Statements,Java SQL,0.8,T
+framework.src.org.plazmaforge.framework.report.data,EntityLoader.java,Establishing direct Database Connection,Java SQL,0.8,T
+framework.src.org.plazmaforge.framework.report.data,EntityLoaderImpl.java,Establishing direct Database Connection,Java SQL,0.8,T
+framework.src.org.plazmaforge.framework.report.data,EntityLoaderImpl.java,Prepared Statements,Java SQL,0.8,T
+framework.src.org.plazmaforge.framework.dao,AbstractSQLExecutor.java,Prepared Statements,Java SQL,0.8,T
+framework.src.org.plazmaforge.framework.dao.connection,ConnectionFactory.java,DataSource,Java SQL,0.8,T
+bs.base.src.org.plazmaforge.bsolution.base.server.services,ERMFileManager.java,Establishing direct Database Connection,Java SQL,0.8,T
+bs.base.src.org.plazmaforge.bsolution.base.server.services,ERMImageManager.java,Establishing direct Database Connection,Java SQL,0.8,T
+bs.base.src.org.plazmaforge.bsolution.base.server.services,ERMUtils.java,Establishing direct Database Connection,Java SQL,0.8,T
+bs.base.src.org.plazmaforge.bsolution.base.server.services,ERMAttributeManager.java,Establishing direct Database Connection,Java SQL,0.8,T
+bs.base.src.org.plazmaforge.bsolution.product.server.services,ProductManagerServiceImpl.java,Prepared Statements,Java SQL,0.8,T
+bs.base.src.org.plazmaforge.bsolution.partner.server.services,PartnerCompressionExecutorImpl.java,Prepared Statements,Java SQL,0.8,T
+bs.base.src.org.plazmaforge.bsolution.finance.server.services,FinanceCompressionExecutorImpl.java,Prepared Statements,Java SQL,0.8,T
+framework.erm.src.org.plazmaforge.framework.erm.sql,ConnectionHolder.java,Establishing direct Database Connection,Java SQL,0.8333334,T
+framework.erm.src.org.plazmaforge.framework.erm.trigger,SQLTrigger.java,Establishing direct Database Connection,Java SQL,0.8333334,T
+framework.erm.src.org.plazmaforge.framework.erm.query,ModifyExecutor.java,Establishing direct Database Connection,Java SQL,0.8333334,T
+framework.src.org.plazmaforge.framework.sql,IDGenerator.java,Prepared Statements,Java SQL,0.8333334,T
+framework.src.org.plazmaforge.framework.sql,ConnectionHolder.java,Establishing direct Database Connection,Java SQL,0.8333334,T
+framework.src.org.plazmaforge.framework.datawarehouse,ITransferTrigger.java,Establishing direct Database Connection,Java SQL,0.8333334,T
+framework.src.org.plazmaforge.framework.report,ReportService.java,Establishing direct Database Connection,Java SQL,0.8333334,T
+framework.src.org.plazmaforge.framework.dao,SQLExecutor.java,Establishing direct Database Connection,Java SQL,0.8333334,T
+bs.base.src.org.plazmaforge.bsolution.product.server.services,ProductCompressionExecutorImpl.java,Prepared Statements,Java SQL,0.8333334,T
+bs.base.src.org.plazmaforge.bsolution.document.server.services,DocumentTypeServiceImpl.java,Establishing direct Database Connection,Java SQL,0.8333334,T
+bs.base.src.org.plazmaforge.bsolution.payroll.server.services,PayrollCalculateExecutor.java,Prepared Statements,Java SQL,0.8333334,T
+framework.erm.src.org.plazmaforge.framework.erm.util,DBUtils.java,Prepared Statements,Java SQL,0.85333335,T
+framework.erm.src.org.plazmaforge.framework.erm.query,Query.java,Establishing direct Database Connection,Java SQL,0.85333335,T
+framework.erm.src.org.plazmaforge.framework.erm.query,Query.java,Prepared Statements,Java SQL,0.85333335,T
+framework.src.org.plazmaforge.framework.datawarehouse,TransferTriggerAdapter.java,Establishing direct Database Connection,Java SQL,0.85333335,T
+framework.src.org.plazmaforge.framework.report.engine.xls,XLSReportEgine.java,Establishing direct Database Connection,Java SQL,0.85333335,T
+framework.src.org.plazmaforge.framework.report.engine.jasperreports,JasperReportsEngine.java,Establishing direct Database Connection,Java SQL,0.85333335,T
+framework.src.org.plazmaforge.framework.report.engine.rtf,RTFReportEngine.java,Establishing direct Database Connection,Java SQL,0.85333335,T
+framework.src.org.plazmaforge.framework.report.engine.jfreereport,JFreeReportEngine.java,Establishing direct Database Connection,Java SQL,0.85333335,T
+framework.src.org.plazmaforge.framework.dao,SQLBuilder.java,Prepared Statements,Java SQL,0.85333335,T
+bs.base.src.org.plazmaforge.bsolution.organization.server.services,ERMWarehouseManager.java,Establishing direct Database Connection,Java SQL,0.85333335,T
+bs.base.src.org.plazmaforge.bsolution.payroll.server.services,ERMPayrollCalculateService.java,Establishing direct Database Connection,Java SQL,0.85333335,T
+framework.erm.src.org.plazmaforge.framework.erm.trigger,SLTrigger.java,Establishing direct Database Connection,Java SQL,0.86666673,T
+framework.erm.src.org.plazmaforge.framework.erm.query,SelectExecutor.java,Establishing direct Database Connection,Java SQL,0.86666673,T
+framework.erm.src.org.plazmaforge.framework.erm.query,UpdateExecutor.java,Establishing direct Database Connection,Java SQL,0.86666673,T
+framework.src.org.plazmaforge.framework.sql,IDGenerator.java,Establishing direct Database Connection,Java SQL,0.86666673,T
+framework.src.org.plazmaforge.framework.sql,DBUtils.java,Establishing direct Database Connection,Java SQL,0.86666673,T
+framework.src.org.plazmaforge.framework.platform.service.impl.spring,SpringConnectionHolder.java,Establishing direct Database Connection,Java SQL,0.86666673,T
+framework.src.org.plazmaforge.framework.report,AbstractReportDialogAcceptor.java,Establishing direct Database Connection,Java SQL,0.86666673,T
+bs.base.src.org.plazmaforge.bsolution.base.server.services,ERMBusinessableManager.java,Establishing direct Database Connection,Java SQL,0.86666673,T
+bs.base.src.org.plazmaforge.bsolution.security.server.services,ERMPermissionViewService.java,Establishing direct Database Connection,Java SQL,0.86666673,T
+bs.base.src.org.plazmaforge.bsolution.organization.server.services,ERMOrganizationService.java,Establishing direct Database Connection,Java SQL,0.86666673,T
+framework.erm.src.org.plazmaforge.framework.erm.query,InsertExecutor.java,Establishing direct Database Connection,Java SQL,0.87619054,T
+framework.src.org.plazmaforge.framework.datawarehouse.database,SQLHelper.java,Prepared Statements,Java SQL,0.87619054,T
+framework.src.org.plazmaforge.framework.report,ReportEngine.java,Establishing direct Database Connection,Java SQL,0.87619054,T
+framework.src.org.plazmaforge.framework.dao,SQLBuilder.java,Establishing direct Database Connection,Java SQL,0.87619054,T
+framework.src.org.plazmaforge.framework.service.impl,AbstractDao.java,Establishing direct Database Connection,Java SQL,0.87619054,T
+bs.base.src.org.plazmaforge.bsolution.bank.server.services,BankImporter.java,Prepared Statements,Java SQL,0.87619054,T
+bs.base.src.org.plazmaforge.bsolution.finance.server.services,EntryCalculateServiceImpl.java,Establishing direct Database Connection,Java SQL,0.87619054,T
+framework.erm.test.org.plazmaforge.framework.erm,BaseTestCase.java,Establishing direct Database Connection,Java SQL,0.8833334,T
+framework.src.org.plazmaforge.framework.platform.service.impl.spring,SpringConnectionHolder.java,DataSource,Java SQL,0.8833334,T
+framework.src.org.plazmaforge.framework.dao,AbstractSQLExecutor.java,Establishing direct Database Connection,Java SQL,0.8833334,T
+bs.base.src.org.plazmaforge.bsolution.goods.server.services,GoodsImporter.java,Prepared Statements,Java SQL,0.8833334,T
+bs.base.src.org.plazmaforge.bsolution.finance.server.services,ERMFinanceManager.java,Establishing direct Database Connection,Java SQL,0.8833334,T
+framework.erm.src.org.plazmaforge.framework.erm.query,DeleteExecutor.java,Establishing direct Database Connection,Java SQL,0.8888889,T
+framework.src.org.plazmaforge.framework.report,AbstractReportEngine.java,Establishing direct Database Connection,Java SQL,0.8888889,T
+framework.src.org.plazmaforge.framework.report.data,DataService.java,Establishing direct Database Connection,Java SQL,0.8888889,T
+framework.src.org.plazmaforge.framework.service.impl,AbstractService.java,Establishing direct Database Connection,Java SQL,0.8888889,T
+bs.base.src.org.plazmaforge.bsolution.base.server.services,PeriodServiceImpl.java,Establishing direct Database Connection,Java SQL,0.8888889,T
+bs.base.src.org.plazmaforge.bsolution.bank.server.services,ERMPaymentLinkManager.java,Establishing direct Database Connection,Java SQL,0.8888889,T
+framework.erm.src.org.plazmaforge.framework.erm.util,DBUtils.java,Establishing direct Database Connection,Java SQL,0.8933333,T
+framework.src.org.plazmaforge.framework.report.service.spring,ReportServiceImpl.java,Establishing direct Database Connection,Java SQL,0.8933333,T
+bs.base.src.org.plazmaforge.bsolution.base.server.services,SystemInfoServiceImpl.java,Prepared Statements,Java SQL,0.8933333,T
+bs.base.src.org.plazmaforge.bsolution.finance.server.services,ERMEntryCalculateFinder.java,Establishing direct Database Connection,Java SQL,0.89696974,T
+framework.src.org.plazmaforge.framework.datawarehouse.database,SQLHelper.java,Establishing direct Database Connection,Java SQL,0.9025641,T
+bs.base.src.org.plazmaforge.bsolution.product.server.services,ERMProductManager.java,Establishing direct Database Connection,Java SQL,0.9111111,T
+bs.base.src.org.plazmaforge.bsolution.base.server.services,SystemInfoServiceImpl.java,Establishing direct Database Connection,Java SQL,0.9122806,T
+framework.erm.test.org.plazmaforge.framework.erm.sql,SQLExecutorTest.java,Establishing direct Database Connection,Java SQL,0.91428554,T
+framework.erm.src.org.plazmaforge.framework.erm.sql,SQLEntityManager.java,Establishing direct Database Connection,Java SQL,0.91666645,T
+framework.erm.src.org.plazmaforge.framework.erm.query,QueryExecutor.java,Establishing direct Database Connection,Java SQL,0.9190473,T
+framework.src.org.plazmaforge.framework.dao.connection,ConnectionFactory.java,Establishing direct Database Connection,Java SQL,0.9190473,T
+framework.erm.src.org.plazmaforge.framework.erm.sql,SQLExecutor.java,Establishing direct Database Connection,Java SQL,0.92380935,T
+,,,,,
+,,,,Not used,296
+,,,,Used,106

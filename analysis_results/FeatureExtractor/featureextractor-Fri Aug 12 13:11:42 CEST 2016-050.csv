@@ -1,0 +1,14 @@
+Package;File;Feature;Technology;Confidence
+src.de.uni.hamburg.swk.extractor.configuration;DatabaseConfigurationService.java;SessionFactory;Hibernate;0.8333334
+src.de.uni.hamburg.swk.extractor.database.dao;AbstractDAO.java;Session;Hibernate;0.86666673
+src.de.uni.hamburg.swk.extractor.database;SessionService.java;SessionFactory;Hibernate;0.86666673
+src.de.uni.hamburg.swk.extractor.database;SessionService.java;Session;Hibernate;0.91515136
+src.de.uni.hamburg.swk.extractor.gui.dialog;DialogProjectNewEdit.java;Transactions;Hibernate;0.7
+src.de.uni.hamburg.swk.extractor.gui.controller;AbstractKnowledgeBaseEditController.java;Transactions;Hibernate;0.7
+src.de.uni.hamburg.swk.extractor.service.alternatives;AlternativeService.java;Transactions;Hibernate;0.7
+src.de.uni.hamburg.swk.extractor.service.extraction.sub;PreScanService.java;Transactions;Hibernate;0.7
+src.de.uni.hamburg.swk.extractor.service.extraction.sub;PostProcessingService.java;Transactions;Hibernate;0.7
+src.de.uni.hamburg.swk.extractor.service.extraction;ExtractionService.java;Transactions;Hibernate;0.7
+src.de.uni.hamburg.swk.extractor.service.decisionpoints;DecisionPointService.java;Transactions;Hibernate;0.7
+src;mapping.hbm.xml;n-1 Relations (Configuration);Hibernate;0.66666675
+src;hibernate.cfg.xml;Support MySQL;Hibernate;0.59999996

@@ -1,0 +1,67 @@
+Package;File;Feature;Technology;Confidence
+main.java.org.broadleafcommerce.common.sitemap.domain;SiteMapGeneratorConfigurationImpl.java;Specifying Columns for fields;JPA;0.86666673
+main.java.org.broadleafcommerce.common.sitemap.domain;SiteMapConfigurationImpl.java;Specifying Columns for fields;JPA;0.85333335
+main.java.org.broadleafcommerce.common.sitemap.domain;SiteMapUrlEntryImpl.java;Specifying Columns for fields;JPA;0.86666673
+main.java.org.broadleafcommerce.common.enumeration.dao;DataDrivenEnumerationDaoImpl.java;EntityManager;JPA;0.8
+main.java.org.broadleafcommerce.common.enumeration.domain;DataDrivenEnumerationImpl.java;Specifying Columns for fields;JPA;0.8333334
+main.java.org.broadleafcommerce.common.enumeration.domain;DataDrivenEnumerationValueImpl.java;Specifying Columns for fields;JPA;0.85333335
+main.java.org.broadleafcommerce.common.enumeration.domain;DataDrivenEnumerationValueImpl.java;Enforcing Indices;Hibernate;0.8
+main.java.org.broadleafcommerce.common.cache;HydratedSetup.java;EntityManagerFactory;JPA;0.8333334
+main.java.org.broadleafcommerce.common.cache;HydratedSetup.java;EntityManager;JPA;0.8888889
+main.java.org.broadleafcommerce.common.resource.service;ResourceBundlingServiceImpl.java;Autowiring;Spring Beans;0.8
+main.java.org.broadleafcommerce.common.email.dao;EmailReportingDaoImpl.java;EntityManager;JPA;0.8
+main.java.org.broadleafcommerce.common.email.domain;EmailTrackingClicksImpl.java;Specifying Columns for fields;JPA;0.86666673
+main.java.org.broadleafcommerce.common.email.domain;EmailTrackingClicksImpl.java;Enforcing Indices;Hibernate;0.8
+main.java.org.broadleafcommerce.common.email.domain;EmailTrackingOpensImpl.java;Specifying Columns for fields;JPA;0.8333334
+main.java.org.broadleafcommerce.common.email.domain;EmailTrackingImpl.java;Specifying Columns for fields;JPA;0.85333335
+main.java.org.broadleafcommerce.common.util;StreamingTransactionCapableUtil.java;EntityManager;JPA;0.8333334
+main.java.org.broadleafcommerce.common.util.tenant;IdentityExecutionUtils.java;DataSource;Java SQL;0.8
+main.java.org.broadleafcommerce.common.util.tenant;IdentityExecutionUtils.java;EntityManagerFactory;JPA;0.8333334
+main.java.org.broadleafcommerce.common.util;BLCFieldUtils.java;SessionFactory;Hibernate;0.8333334
+main.java.org.broadleafcommerce.common.util;UpdateExecutor.java;EntityManager;JPA;0.8
+main.java.org.broadleafcommerce.common.util;UpdateExecutor.java;Session;Hibernate;0.8333334
+main.java.org.broadleafcommerce.common.util;DialectHelper.java;EntityManager;JPA;0.8
+main.java.org.broadleafcommerce.common.util;DialectHelper.java;Session;Hibernate;0.8333334
+main.java.org.broadleafcommerce.common.util.dao;TypedQueryBuilder.java;EntityManager;JPA;0.87619054
+main.java.org.broadleafcommerce.common.util.dao;DynamicDaoHelperImpl.java;SessionFactory;Hibernate;0.89696974
+main.java.org.broadleafcommerce.common.util.dao;DynamicDaoHelperImpl.java;EntityManager;JPA;0.8888889
+main.java.org.broadleafcommerce.common.util.dao;DynamicDaoHelperImpl.java;Session;Hibernate;0.9047619
+main.java.org.broadleafcommerce.common.util.dao;DynamicDaoHelper.java;SessionFactory;Hibernate;0.85333335
+main.java.org.broadleafcommerce.common.util.dao;DynamicDaoHelper.java;EntityManager;JPA;0.8888889
+main.java.org.broadleafcommerce.common.util.dao;DynamicDaoHelper.java;Session;Hibernate;0.8833334
+main.java.org.broadleafcommerce.common.persistence;SequenceGeneratorCorruptionDetection.java;SessionFactory;Hibernate;0.8
+main.java.org.broadleafcommerce.common.persistence;SequenceGeneratorCorruptionDetection.java;EntityManager;JPA;0.85333335
+main.java.org.broadleafcommerce.common.config.dao;SystemPropertiesDaoImpl.java;EntityManager;JPA;0.8
+main.java.org.broadleafcommerce.common.config.dao;ModuleConfigurationDaoImpl.java;EntityManager;JPA;0.8
+main.java.org.broadleafcommerce.common.config.domain;SystemPropertyImpl.java;Specifying Columns for fields;JPA;0.8833334
+main.java.org.broadleafcommerce.common.config.domain;AbstractModuleConfiguration.java;Specifying Columns for fields;JPA;0.8833334
+main.java.org.broadleafcommerce.common.media.domain;MediaImpl.java;Specifying Columns for fields;JPA;0.86666673
+main.java.org.broadleafcommerce.common.media.domain;MediaImpl.java;Enforcing Indices;Hibernate;0.8
+main.java.org.broadleafcommerce.common.extensibility.jpa;MergePersistenceUnitManager.java;DataSource;Java SQL;0.90000004
+main.java.org.broadleafcommerce.common.sandbox;SandBoxHelper.java;EntityManager;JPA;0.87619054
+main.java.org.broadleafcommerce.common.sandbox;DefaultSandBoxHelper.java;EntityManager;JPA;0.85333335
+main.java.org.broadleafcommerce.common.sandbox;DefaultSandBoxHelper.java;Session;Hibernate;0.8
+main.java.org.broadleafcommerce.common.sandbox.dao;SandBoxDaoImpl.java;EntityManager;JPA;0.91999966
+main.java.org.broadleafcommerce.common.sandbox.domain;SandBoxImpl.java;Specifying Columns for fields;JPA;0.8833334
+main.java.org.broadleafcommerce.common.sandbox.domain;SandBoxManagementImpl.java;Cascade all operations;JPA;0.8
+main.java.org.broadleafcommerce.common.site.dao;SiteDaoImpl.java;EntityManager;JPA;0.8
+main.java.org.broadleafcommerce.common.site.domain;SiteCatalogXrefImpl.java;Joining Columns for Entities;JPA;0.8
+main.java.org.broadleafcommerce.common.site.domain;SiteCatalogXrefImpl.java;n-1 Associations;JPA;0.8
+main.java.org.broadleafcommerce.common.site.domain;SiteImpl.java;Specifying Columns for fields;JPA;0.86666673
+main.java.org.broadleafcommerce.common.site.domain;CatalogImpl.java;Specifying Columns for fields;JPA;0.8
+main.java.org.broadleafcommerce.common.web;BroadleafRequestContext.java;EntityManager;JPA;0.8
+main.java.org.broadleafcommerce.common.locale.dao;LocaleDaoImpl.java;EntityManager;JPA;0.8
+main.java.org.broadleafcommerce.common.locale.domain;LocaleImpl.java;Specifying Columns for fields;JPA;0.85333335
+main.java.org.broadleafcommerce.common.audit;Auditable.java;Specifying Columns for fields;JPA;0.85333335
+main.java.org.broadleafcommerce.common.dao;GenericEntityDaoImpl.java;EntityManager;JPA;0.86666673
+main.java.org.broadleafcommerce.common.dao;GenericEntityDaoImpl.java;Session;Hibernate;0.86666673
+main.java.org.broadleafcommerce.common.dao;GenericEntityDao.java;EntityManager;JPA;0.8
+main.java.org.broadleafcommerce.common.currency.dao;BroadleafCurrencyDaoImpl.java;EntityManager;JPA;0.8
+main.java.org.broadleafcommerce.common.currency.domain;BroadleafCurrencyImpl.java;Specifying Columns for fields;JPA;0.8333334
+main.java.org.broadleafcommerce.common.service;GenericEntityServiceImpl.java;EntityManager;JPA;0.8333334
+main.java.org.broadleafcommerce.common.service;GenericEntityService.java;EntityManager;JPA;0.8
+main.java.org.broadleafcommerce.common.i18n.dao;TranslationDaoExtensionHandler.java;EntityManager;JPA;0.8
+main.java.org.broadleafcommerce.common.i18n.dao;TranslationDaoImpl.java;EntityManager;JPA;0.85333335
+main.java.org.broadleafcommerce.common.i18n.dao;ISODaoImpl.java;EntityManager;JPA;0.8
+main.java.org.broadleafcommerce.common.i18n.domain;TranslationImpl.java;Specifying Columns for fields;JPA;0.87619054
+main.java.org.broadleafcommerce.common.i18n.domain;ISOCountryImpl.java;Specifying Columns for fields;JPA;0.86666673

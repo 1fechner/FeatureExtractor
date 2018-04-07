@@ -1,0 +1,104 @@
+Package;File;Feature;Technology;Confidence
+framework.erm.src.org.plazmaforge.framework.erm.util;DBUtils.java;Establishing direct Database Connection;Java SQL;0.8933333
+framework.erm.src.org.plazmaforge.framework.erm.util;DBUtils.java;Prepared Statements;Java SQL;0.85333335
+framework.erm.src.org.plazmaforge.framework.erm.sql;ConnectionHolder.java;Establishing direct Database Connection;Java SQL;0.8333334
+framework.erm.src.org.plazmaforge.framework.erm.sql;SQLExecutor.java;Establishing direct Database Connection;Java SQL;0.92380935
+framework.erm.src.org.plazmaforge.framework.erm.sql;SQLEntityManager.java;Establishing direct Database Connection;Java SQL;0.91666645
+framework.erm.src.org.plazmaforge.framework.erm.dialect;DialectFactory.java;Establishing direct Database Connection;Java SQL;0.8
+framework.erm.src.org.plazmaforge.framework.erm.dialect;Dialect.java;Establishing direct Database Connection;Java SQL;0.8
+framework.erm.src.org.plazmaforge.framework.erm.trigger;SLTrigger.java;Establishing direct Database Connection;Java SQL;0.86666673
+framework.erm.src.org.plazmaforge.framework.erm.trigger;SQLTrigger.java;Establishing direct Database Connection;Java SQL;0.8333334
+framework.erm.src.org.plazmaforge.framework.erm.trigger;SQLTrigger.java;Prepared Statements;Java SQL;0.8
+framework.erm.src.org.plazmaforge.framework.erm.trigger;AbstractTrigger.java;Establishing direct Database Connection;Java SQL;0.8
+framework.erm.src.org.plazmaforge.framework.erm.trigger;Trigger.java;Establishing direct Database Connection;Java SQL;0.8
+framework.erm.src.org.plazmaforge.framework.erm.query;DeleteExecutor.java;Establishing direct Database Connection;Java SQL;0.8888889
+framework.erm.src.org.plazmaforge.framework.erm.query;Query.java;Establishing direct Database Connection;Java SQL;0.85333335
+framework.erm.src.org.plazmaforge.framework.erm.query;Query.java;Prepared Statements;Java SQL;0.85333335
+framework.erm.src.org.plazmaforge.framework.erm.query;InsertExecutor.java;Establishing direct Database Connection;Java SQL;0.87619054
+framework.erm.src.org.plazmaforge.framework.erm.query;SelectExecutor.java;Establishing direct Database Connection;Java SQL;0.86666673
+framework.erm.src.org.plazmaforge.framework.erm.query;QueryExecutor.java;Establishing direct Database Connection;Java SQL;0.9190473
+framework.erm.src.org.plazmaforge.framework.erm.query;UpdateExecutor.java;Establishing direct Database Connection;Java SQL;0.86666673
+framework.erm.src.org.plazmaforge.framework.erm.query;ModifyExecutor.java;Establishing direct Database Connection;Java SQL;0.8333334
+framework.erm.src.org.plazmaforge.framework.erm.procedure;AbstractProcedure.java;Establishing direct Database Connection;Java SQL;0.8
+framework.erm.src.org.plazmaforge.framework.erm.procedure;Procedure.java;Establishing direct Database Connection;Java SQL;0.8
+framework.erm.src.org.plazmaforge.framework.erm.procedure;JavaProcedure.java;Establishing direct Database Connection;Java SQL;0.8
+framework.erm.src.org.plazmaforge.framework.erm.type;FloatType.java;Prepared Statements;Java SQL;0.8
+framework.erm.src.org.plazmaforge.framework.erm.type;DateTimeType.java;Prepared Statements;Java SQL;0.8
+framework.erm.src.org.plazmaforge.framework.erm.type;TimeType.java;Prepared Statements;Java SQL;0.8
+framework.erm.src.org.plazmaforge.framework.erm.type;StringType.java;Prepared Statements;Java SQL;0.8
+framework.erm.src.org.plazmaforge.framework.erm.type;YNBooleanType.java;Prepared Statements;Java SQL;0.8
+framework.erm.src.org.plazmaforge.framework.erm.type;TimestampType.java;Prepared Statements;Java SQL;0.8
+framework.erm.src.org.plazmaforge.framework.erm.type;DoubleType.java;Prepared Statements;Java SQL;0.8
+framework.erm.src.org.plazmaforge.framework.erm.type;IntegerType.java;Prepared Statements;Java SQL;0.8
+framework.erm.src.org.plazmaforge.framework.erm.type;ObjectType.java;Prepared Statements;Java SQL;0.8
+framework.erm.src.org.plazmaforge.framework.erm.type;BooleanType.java;Prepared Statements;Java SQL;0.8
+framework.erm.src.org.plazmaforge.framework.erm.type;DateType.java;Prepared Statements;Java SQL;0.8
+framework.erm.src.org.plazmaforge.framework.erm.type;Type.java;Prepared Statements;Java SQL;0.8
+framework.erm.src.org.plazmaforge.framework.erm.type;ByteType.java;Prepared Statements;Java SQL;0.8
+framework.erm.src.org.plazmaforge.framework.erm.type;LongType.java;Prepared Statements;Java SQL;0.8
+framework.erm.src.org.plazmaforge.framework.erm.event;Event.java;Establishing direct Database Connection;Java SQL;0.8
+framework.erm.src.org.plazmaforge.framework.erm.event;EventWrapper.java;Establishing direct Database Connection;Java SQL;0.8
+framework.erm.src.org.plazmaforge.framework.erm.generator;IncrementGenerator.java;Establishing direct Database Connection;Java SQL;0.8
+framework.erm.src.org.plazmaforge.framework.erm.generator;GeneratorHelper.java;Establishing direct Database Connection;Java SQL;0.8
+framework.erm.src.org.plazmaforge.framework.erm.generator;Generator.java;Establishing direct Database Connection;Java SQL;0.8
+framework.erm.src.org.plazmaforge.framework.erm.generator;SequenceGenerator.java;Establishing direct Database Connection;Java SQL;0.8
+framework.erm.test.org.plazmaforge.framework.erm.sql;SQLExecutorTest.java;Establishing direct Database Connection;Java SQL;0.91428554
+framework.erm.test.org.plazmaforge.framework.erm;BaseTestCase.java;Establishing direct Database Connection;Java SQL;0.8833334
+framework.src.org.plazmaforge.framework.sql;IDGenerator.java;Establishing direct Database Connection;Java SQL;0.86666673
+framework.src.org.plazmaforge.framework.sql;IDGenerator.java;Prepared Statements;Java SQL;0.8333334
+framework.src.org.plazmaforge.framework.sql;ConnectionHolder.java;Establishing direct Database Connection;Java SQL;0.8333334
+framework.src.org.plazmaforge.framework.sql;DBUtils.java;Establishing direct Database Connection;Java SQL;0.86666673
+framework.src.org.plazmaforge.framework.datawarehouse;ITransferTrigger.java;Establishing direct Database Connection;Java SQL;0.8333334
+framework.src.org.plazmaforge.framework.datawarehouse.database;SQLHelper.java;Establishing direct Database Connection;Java SQL;0.9025641
+framework.src.org.plazmaforge.framework.datawarehouse.database;SQLHelper.java;Prepared Statements;Java SQL;0.87619054
+framework.src.org.plazmaforge.framework.datawarehouse;TransferTriggerAdapter.java;Establishing direct Database Connection;Java SQL;0.85333335
+framework.src.org.plazmaforge.framework.datawarehouse;TransferTriggerAdapter.java;Prepared Statements;Java SQL;0.8
+framework.src.org.plazmaforge.framework.platform.service.impl.spring;SpringConnectionHolder.java;Establishing direct Database Connection;Java SQL;0.86666673
+framework.src.org.plazmaforge.framework.platform.service.impl.spring;SpringConnectionHolder.java;DataSource;Java SQL;0.8833334
+framework.src.org.plazmaforge.framework.report;ReportService.java;Establishing direct Database Connection;Java SQL;0.8333334
+framework.src.org.plazmaforge.framework.report;ReportEngine.java;Establishing direct Database Connection;Java SQL;0.87619054
+framework.src.org.plazmaforge.framework.report;AbstractReportEngine.java;Establishing direct Database Connection;Java SQL;0.8888889
+framework.src.org.plazmaforge.framework.report.engine.xls;XLSReportEgine.java;Establishing direct Database Connection;Java SQL;0.85333335
+framework.src.org.plazmaforge.framework.report.engine.jasperreports;JasperReportsEngine.java;Establishing direct Database Connection;Java SQL;0.85333335
+framework.src.org.plazmaforge.framework.report.engine.rtf;RTFReportEngine.java;Establishing direct Database Connection;Java SQL;0.85333335
+framework.src.org.plazmaforge.framework.report.engine.jfreereport;JFreeReportEngine.java;Establishing direct Database Connection;Java SQL;0.85333335
+framework.src.org.plazmaforge.framework.report;AbstractReportDialogAcceptor.java;Establishing direct Database Connection;Java SQL;0.86666673
+framework.src.org.plazmaforge.framework.report.data;DataService.java;Establishing direct Database Connection;Java SQL;0.8888889
+framework.src.org.plazmaforge.framework.report.data;EntityLoader.java;Establishing direct Database Connection;Java SQL;0.8
+framework.src.org.plazmaforge.framework.report.data;EntityLoaderImpl.java;Establishing direct Database Connection;Java SQL;0.8
+framework.src.org.plazmaforge.framework.report.data;EntityLoaderImpl.java;Prepared Statements;Java SQL;0.8
+framework.src.org.plazmaforge.framework.report.service.spring;ReportServiceImpl.java;Establishing direct Database Connection;Java SQL;0.8933333
+framework.src.org.plazmaforge.framework.dao;SQLBuilder.java;Establishing direct Database Connection;Java SQL;0.87619054
+framework.src.org.plazmaforge.framework.dao;SQLBuilder.java;Prepared Statements;Java SQL;0.85333335
+framework.src.org.plazmaforge.framework.dao;AbstractSQLExecutor.java;Establishing direct Database Connection;Java SQL;0.8833334
+framework.src.org.plazmaforge.framework.dao;AbstractSQLExecutor.java;Prepared Statements;Java SQL;0.8
+framework.src.org.plazmaforge.framework.dao;SQLExecutor.java;Establishing direct Database Connection;Java SQL;0.8333334
+framework.src.org.plazmaforge.framework.dao.connection;ConnectionFactory.java;Establishing direct Database Connection;Java SQL;0.9190473
+framework.src.org.plazmaforge.framework.dao.connection;ConnectionFactory.java;DataSource;Java SQL;0.8
+framework.src.org.plazmaforge.framework.service.impl;AbstractService.java;Establishing direct Database Connection;Java SQL;0.8888889
+framework.src.org.plazmaforge.framework.service.impl;AbstractDao.java;Establishing direct Database Connection;Java SQL;0.87619054
+bs.base.src.org.plazmaforge.bsolution.base.server.services;ERMBusinessableManager.java;Establishing direct Database Connection;Java SQL;0.86666673
+bs.base.src.org.plazmaforge.bsolution.base.server.services;ERMFileManager.java;Establishing direct Database Connection;Java SQL;0.8
+bs.base.src.org.plazmaforge.bsolution.base.server.services;SystemInfoServiceImpl.java;Establishing direct Database Connection;Java SQL;0.9122806
+bs.base.src.org.plazmaforge.bsolution.base.server.services;SystemInfoServiceImpl.java;Prepared Statements;Java SQL;0.8933333
+bs.base.src.org.plazmaforge.bsolution.base.server.services;PeriodServiceImpl.java;Establishing direct Database Connection;Java SQL;0.8888889
+bs.base.src.org.plazmaforge.bsolution.base.server.services;ERMImageManager.java;Establishing direct Database Connection;Java SQL;0.8
+bs.base.src.org.plazmaforge.bsolution.base.server.services;ERMUtils.java;Establishing direct Database Connection;Java SQL;0.8
+bs.base.src.org.plazmaforge.bsolution.base.server.services;ERMAttributeManager.java;Establishing direct Database Connection;Java SQL;0.8
+bs.base.src.org.plazmaforge.bsolution.security.server.services;ERMPermissionViewService.java;Establishing direct Database Connection;Java SQL;0.86666673
+bs.base.src.org.plazmaforge.bsolution.organization.server.services;ERMOrganizationService.java;Establishing direct Database Connection;Java SQL;0.86666673
+bs.base.src.org.plazmaforge.bsolution.organization.server.services;ERMWarehouseManager.java;Establishing direct Database Connection;Java SQL;0.85333335
+bs.base.src.org.plazmaforge.bsolution.bank.server.services;BankImporter.java;Prepared Statements;Java SQL;0.87619054
+bs.base.src.org.plazmaforge.bsolution.bank.server.services;ERMPaymentLinkManager.java;Establishing direct Database Connection;Java SQL;0.8888889
+bs.base.src.org.plazmaforge.bsolution.product.server.services;ERMProductManager.java;Establishing direct Database Connection;Java SQL;0.9111111
+bs.base.src.org.plazmaforge.bsolution.product.server.services;ProductCompressionExecutorImpl.java;Prepared Statements;Java SQL;0.8333334
+bs.base.src.org.plazmaforge.bsolution.product.server.services;ProductManagerServiceImpl.java;Prepared Statements;Java SQL;0.8
+bs.base.src.org.plazmaforge.bsolution.document.server.services;DocumentTypeServiceImpl.java;Establishing direct Database Connection;Java SQL;0.8333334
+bs.base.src.org.plazmaforge.bsolution.partner.server.services;PartnerCompressionExecutorImpl.java;Prepared Statements;Java SQL;0.8
+bs.base.src.org.plazmaforge.bsolution.goods.server.services;GoodsImporter.java;Prepared Statements;Java SQL;0.8833334
+bs.base.src.org.plazmaforge.bsolution.finance.server.services;EntryCalculateServiceImpl.java;Establishing direct Database Connection;Java SQL;0.87619054
+bs.base.src.org.plazmaforge.bsolution.finance.server.services;ERMEntryCalculateFinder.java;Establishing direct Database Connection;Java SQL;0.89696974
+bs.base.src.org.plazmaforge.bsolution.finance.server.services;ERMFinanceManager.java;Establishing direct Database Connection;Java SQL;0.8833334
+bs.base.src.org.plazmaforge.bsolution.finance.server.services;FinanceCompressionExecutorImpl.java;Prepared Statements;Java SQL;0.8
+bs.base.src.org.plazmaforge.bsolution.payroll.server.services;ERMPayrollCalculateService.java;Establishing direct Database Connection;Java SQL;0.85333335
+bs.base.src.org.plazmaforge.bsolution.payroll.server.services;PayrollCalculateExecutor.java;Prepared Statements;Java SQL;0.8333334

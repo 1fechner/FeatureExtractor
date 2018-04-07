@@ -1,0 +1,5 @@
+Package;File;Feature;Technology;Confidence
+ps_dreambike.dreambike.WEB-INF.classes;ps_database.properties;Support MySQL;Hibernate;0.59999996
+ps_dreambike.dreambike.WEB-INF.classes;dreambike_database.properties;Support MySQL;Hibernate;0.59999996
+ps_dreambike.test.ps_dreambike;InitOrderData.java;SessionFactory;Hibernate;0.86666673
+ps_dreambike.test.ps_dreambike;InitOrderData.java;Session;Hibernate;0.9025641

@@ -1,0 +1,29 @@
+Package,File,Feature,Technology,Confidence,Used
+ps_dreambike.dreambike.WEB-INF,dreambike-servlet.xml,JDBC Work,Hibernate,0.46666664,F
+ps_dreambike.src.ps_dreambike,PlanProduceFormController.java,JDBC Work,Hibernate,0.46666667,F
+ps_dreambike.src.ps_dreambike,PriceFormController.java,JDBC Work,Hibernate,0.46666667,F
+ps_dreambike.src.ps_dreambike,PlanPurchFormController.java,JDBC Work,Hibernate,0.46666667,F
+ps_dreambike.src.ps_dreambike,TechFormController.java,JDBC Work,Hibernate,0.46666667,F
+ps_dreambike.src.ps_dreambike,EmailRefuseFormController.java,JDBC Work,Hibernate,0.46666667,F
+ps_dreambike.src.ps_dreambike,EmailReceiveNoteFormController.java,JDBC Work,Hibernate,0.46666667,F
+ps_dreambike.src.ps_dreambike,OrderConfirmFormController.java,JDBC Work,Hibernate,0.46666667,F
+ps_dreambike.src.ps_dreambike,OrderFormController.java,JDBC Work,Hibernate,0.46666667,F
+ps_dreambike.src.ps_dreambike,StockFormController.java,JDBC Work,Hibernate,0.46666667,F
+ps_dreambike.dreambike.WEB-INF,workflow_engine_context.xml,SessionFactory,Hibernate,0.46666667,F
+ps_dreambike.dreambike.WEB-INF,workflow_engine_context.xml,Session,Hibernate,0.46666667,F
+ps_dreambike.dreambike.WEB-INF,workflow_engine_context.xml,JDBC Work,Hibernate,0.46666667,F
+ps_dreambike.dreambike.WEB-INF,ps_hibernate_context.xml,SessionFactory,Hibernate,0.46666667,F
+ps_dreambike.dreambike.WEB-INF,ps_hibernate_context.xml,Session,Hibernate,0.46666667,F
+ps_dreambike.dreambike.WEB-INF,ps_hibernate_context.xml,DataSource,Java SQL,0.46666667,F
+ps_dreambike.dreambike.WEB-INF,ps_hibernate_context.xml,JDBC Work,Hibernate,0.46666667,F
+ps_dreambike.dreambike.WEB-INF,web.xml,Session,Hibernate,0.46666667,F
+ps_dreambike.dreambike.WEB-INF.classes,oscache.properties,Establishing direct Database Connection,Java SQL,0.46666667,F
+ps_dreambike.dreambike.WEB-INF,dreambike_context.xml,SessionFactory,Hibernate,0.46666667,F
+ps_dreambike.dreambike.WEB-INF,dreambike_context.xml,Session,Hibernate,0.46666667,F
+ps_dreambike.dreambike.WEB-INF,dreambike_context.xml,DataSource,Java SQL,0.46666667,F
+ps_dreambike.dreambike.WEB-INF,dreambike_context.xml,JDBC Work,Hibernate,0.46666667,F
+ps_dreambike.dreambike.WEB-INF,workflow_service_context.xml,JDBC Work,Hibernate,0.46666667,F
+ps_dreambike.dreambike.WEB-INF.classes,ps_database.properties,Support MySQL,Hibernate,0.59999996,T
+ps_dreambike.dreambike.WEB-INF.classes,dreambike_database.properties,Support MySQL,Hibernate,0.59999996,T
+ps_dreambike.test.ps_dreambike,InitOrderData.java,SessionFactory,Hibernate,0.86666673,T
+ps_dreambike.test.ps_dreambike,InitOrderData.java,Session,Hibernate,0.9025641,T

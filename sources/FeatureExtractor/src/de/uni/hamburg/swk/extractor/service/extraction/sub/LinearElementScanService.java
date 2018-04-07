@@ -1,5 +1,6 @@
 package de.uni.hamburg.swk.extractor.service.extraction.sub;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -40,7 +41,7 @@ public class LinearElementScanService extends AbstractElementScanService
         float progress = 0.0f;
         
         if (OptimizationRules.R_204_EXPORT_RESULTS_CSV)
-            CSVExportService.buffer("Package;File;Feature;Technology;Confidence");
+            CSVExportService.buffer("Package;File;Feature;Technology;No. indicators found;Indicator Type;Confidence");
 
         for (Element e : el)
         {
@@ -106,6 +107,7 @@ public class LinearElementScanService extends AbstractElementScanService
             // Define variables to calculate confidence
             int noIndicatorsFound = 0;
             Set<Integer> distIndicatorsFound = new HashSet<Integer>();
+            List<Indicator> indicatorsFound = new ArrayList<Indicator>();
             float sum = 0.0f;
 
             lineCounter = 1;
@@ -124,13 +126,16 @@ public class LinearElementScanService extends AbstractElementScanService
                         noIndicatorsFound += 1;
                         distIndicatorsFound.add(indicator.getId());
 
-                        if (Configuration.isVerbose())
-                            print(String.format(Messages.SCAN_SCANNING_INDICATOR_FOUND, indicator.getId(),
-                                    indicator.getValue(), indicator.getType(), element.getName(), lineCounter, s));
+                        indicatorsFound.add(indicator);
 
                         // Add value for this indicator to sum. Weight from type
                         // is more relevant
                         sum += ((2 * indicator.getType().getValue() + indicator.getConfidence().getValue()) / 3);
+
+                        if (Configuration.isVerbose())
+                            print(String.format(Messages.SCAN_SCANNING_INDICATOR_FOUND, indicator.getId(),
+                                    indicator.getValue(), indicator.getType(), element.getName(), lineCounter, s));
+
                     }
                 }
 
@@ -159,8 +164,13 @@ public class LinearElementScanService extends AbstractElementScanService
 
                 if (OptimizationRules.R_204_EXPORT_RESULTS_CSV)
                 {
-                    CSVExportService.buffer(String.format("%s;%s;%s;%s;%s", element.getPackage(), element.getName(),
-                            t.getName(), t.getBelongsTo().getName(), r.getConfidence()));
+                    for (Indicator i : indicatorsFound)
+                    {
+                        CSVExportService.buffer(String.format(";;;;;%s;%f", i.getType(), i.getType().getValue()));
+                    }
+
+                    CSVExportService.buffer(String.format("%s;%s;%s;%s;%s;->;%f", element.getPackage(), element.getName(),
+                            t.getName(), t.getBelongsTo().getName(), noIndicatorsFound, r.getConfidence()));
                 }
 
                 String name = String.format("%s (of '%s')", t.getName(), t.getBelongsTo().getName());
