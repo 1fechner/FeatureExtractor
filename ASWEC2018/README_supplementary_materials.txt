@@ -1,4 +1,4 @@
-ECSA 2018 - Supplementary Materials
+ASWEC 2018 - Supplementary Materials
 
 We analyzed 5 different applications to identify features of the object-relational mapping tool Hibernate and the Java Persistence API (JPA).
 
